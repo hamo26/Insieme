@@ -1,0 +1,12 @@
+<resources>
+
+    <string name="app_name">Insieme</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="userNameText">USER NAME</string>
+    <string name="passwordText">PASSWORD</string>
+    <string name="LoginButtonText">LOGIN</string>
+    <string name="LoginImageDescription">Login image </string>
+    
+	
+</resources>
