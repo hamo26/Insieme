@@ -21,7 +21,7 @@ public final class R {
         public static final int login=0x7f020002;
     }
     public static final class id {
-        public static final int button1=0x7f080004;
+        public static final int loginButton=0x7f080004;
         public static final int loginImageId=0x7f080005;
         public static final int menu_settings=0x7f080006;
         public static final int passwordInputId=0x7f080003;

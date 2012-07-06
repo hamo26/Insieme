@@ -17,7 +17,8 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColorLink="@android:color/white"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android1:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/userNameTextId"
@@ -30,7 +31,8 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColorLink="@android:color/white"
-        android:textSize="20dp" />
+        android:textSize="20dp" 
+        android1:textColor="#FFFFFF" />
 
     <EditText
         android:id="@+id/userNameInputId"
@@ -53,7 +55,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/passwordInputId"
