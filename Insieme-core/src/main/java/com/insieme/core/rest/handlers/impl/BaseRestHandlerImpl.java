@@ -4,8 +4,8 @@ import org.restlet.Application;
 import org.restlet.Restlet;
 import org.restlet.routing.Router;
 
-import com.insieme.core.rest.handlers.LoginResource;
-import com.insieme.core.rest.handlers.TracksServerResource;
+import com.insieme.core.rest.handlers.LoginResourceImpl;
+import com.insieme.core.tracks.rest.handlers.impl.TracksResourceImpl;
 
 public class BaseRestHandlerImpl extends Application {
 	
@@ -19,8 +19,8 @@ public class BaseRestHandlerImpl extends Application {
         Router router = new Router(getContext());  
   
         // Defines only one route  
-        router.attach("/login", LoginResource.class);  
-        router.attach("/tracks/{trackId}", TracksServerResource.class);
+        router.attach("/login/{user}", LoginResourceImpl.class);  
+        router.attach("/tracks/{trackId}", TracksResourceImpl.class);
   
         return router;  
     }  

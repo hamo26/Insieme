@@ -32,15 +32,8 @@
 	</dependency> 
  	<dependency>
 		<groupId>com.google.inject</groupId>
-		<artifactId>guice-parent</artifactId>
-		<version>3.0-rc3</version>
+		<artifactId>guice</artifactId>
+		<version>3.0</version>
   	</dependency>
   </dependencies>
-  <repositories>
-      <repository>  
-  		<id>maven-restlet</id>  
-  		<name>Public online Restlet repository</name>  
-		<url>http://maven.restlet.org</url>  
-  	  </repository>  
-  </repositories> 
 </project>

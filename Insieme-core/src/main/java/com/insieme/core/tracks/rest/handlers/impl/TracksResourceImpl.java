@@ -1,9 +1,11 @@
-package com.insieme.core.rest.handlers;
+package com.insieme.core.tracks.rest.handlers.impl;
 
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.ServerResource;
 
-public class TracksServerResource extends ServerResource implements TracksResource {
+import com.insieme.core.tracks.rest.handlers.TracksResource;
+
+public class TracksResourceImpl extends ServerResource implements TracksResource {
 	
 	private String trackId;
 	
