@@ -45,7 +45,7 @@ public class Users extends UpdatableTableImpl<UsersRecord> {
 	 * <p>
 	 * This column is part of the table's PRIMARY KEY
 	 */
-	public final TableField<UsersRecord, Integer> IDUSERS = createField("idUsers", org.jooq.impl.SQLDataType.INTEGER, this);
+	public final TableField<UsersRecord, String> USER_ID = createField("USER_ID", SQLDataType.VARCHAR, this);
 
 	/**
 	 * User's first name

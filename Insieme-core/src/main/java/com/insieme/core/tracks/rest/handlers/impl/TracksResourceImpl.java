@@ -1,11 +1,14 @@
 package com.insieme.core.tracks.rest.handlers.impl;
 
 import org.restlet.resource.ResourceException;
-import org.restlet.resource.ServerResource;
 
+import com.insieme.common.guice.SelfInjectingServerResource;
 import com.insieme.core.tracks.rest.handlers.TracksResource;
 
-public class TracksResourceImpl extends ServerResource implements TracksResource {
+/**
+ * Implementation of {@link TracksResource}.
+ */
+public class TracksResourceImpl extends SelfInjectingServerResource implements TracksResource {
 	
 	private String trackId;
 	
