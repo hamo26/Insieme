@@ -4,9 +4,9 @@ import java.sql.Connection;
 
 import com.google.inject.ImplementedBy;
 import com.insieme.common.database.transactions.Transaction;
-import com.insieme.core.login.domain.dto.User;
+import com.insieme.core.domain.dto.InsiemeException;
+import com.insieme.core.domain.dto.User;
 import com.insieme.core.user.service.impl.UserServiceImpl;
-import com.insieme.database.exception.InsiemePersistenceException;
 
 /**
  * Peristence user service used by resources to get users.
@@ -22,7 +22,7 @@ public interface UserService {
 	 * @return the user
 	 */
 	@Transaction
-	public User getUser(Connection connection, String userId) throws InsiemePersistenceException;
+	public User getUser(Connection connection, String userId) throws InsiemeException;
 	
 	/**
 	 * Checks if a user is verified. Enforces that userid and password tuple
@@ -36,5 +36,5 @@ public interface UserService {
 	 * @return true, if is user verified
 	 */
 	@Transaction
-	public User getUser(Connection connection, String userId, String password) throws InsiemePersistenceException;
+	public User getUser(Connection connection, String userId, String password) throws InsiemeException;
 }

@@ -5,11 +5,12 @@ import org.restlet.Restlet;
 import org.restlet.routing.Router;
 
 import com.google.inject.Guice;
+import com.insieme.common.guice.InsiemeCommonModule;
 import com.insieme.common.guice.SelfInjectingServerResourceModule;
 import com.insieme.common.guice.ServiceModule;
 import com.insieme.common.guice.TransactionModule;
-import com.insieme.core.login.rest.handlers.impl.LoginResourceImpl;
 import com.insieme.core.tracks.rest.handlers.impl.TracksResourceImpl;
+import com.insieme.core.user.rest.handlers.impl.AuthenticationResourceImpl;
 
 /**
  * The Base Rest Handler which defines all url binding and delegates to the appropriate resource.
@@ -35,10 +36,11 @@ public class BaseRestHandlerImpl extends Application {
         Guice.createInjector(
         		new ServiceModule(),
         		new TransactionModule(),
-        		new SelfInjectingServerResourceModule());
+        		new SelfInjectingServerResourceModule(),
+        		new InsiemeCommonModule());
         
         // Defines only one route  
-        router.attach("/login/{userId}", LoginResourceImpl.class);  
+        router.attach("/login", AuthenticationResourceImpl.class);  
         router.attach("/tracks/{trackId}", TracksResourceImpl.class);
   
         return router;  
