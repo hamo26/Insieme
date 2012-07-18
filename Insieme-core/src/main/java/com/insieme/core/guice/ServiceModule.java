@@ -1,4 +1,4 @@
-package com.insieme.common.guice;
+package com.insieme.core.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;

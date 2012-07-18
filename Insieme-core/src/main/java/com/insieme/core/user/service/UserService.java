@@ -4,8 +4,8 @@ import java.sql.Connection;
 
 import com.google.inject.ImplementedBy;
 import com.insieme.common.database.transactions.Transaction;
-import com.insieme.core.domain.dto.InsiemeException;
-import com.insieme.core.domain.dto.User;
+import com.insieme.common.domain.dto.InsiemeException;
+import com.insieme.common.domain.dto.User;
 import com.insieme.core.user.service.impl.UserServiceImpl;
 
 /**

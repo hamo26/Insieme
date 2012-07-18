@@ -2,7 +2,7 @@ package com.insieme.core.tracks.rest.handlers.impl;
 
 import org.restlet.resource.ResourceException;
 
-import com.insieme.common.guice.SelfInjectingServerResource;
+import com.insieme.core.guice.SelfInjectingServerResource;
 import com.insieme.core.tracks.rest.handlers.TracksResource;
 
 /**

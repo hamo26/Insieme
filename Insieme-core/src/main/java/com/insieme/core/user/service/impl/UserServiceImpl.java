@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.insieme.common.database.dto.InsiemeFactory;
 import com.insieme.common.database.dto.Tables;
-import com.insieme.core.domain.dto.InsiemeException;
-import com.insieme.core.domain.dto.User;
+import com.insieme.common.domain.dto.InsiemeException;
+import com.insieme.common.domain.dto.User;
 import com.insieme.core.user.service.UserService;
 
 

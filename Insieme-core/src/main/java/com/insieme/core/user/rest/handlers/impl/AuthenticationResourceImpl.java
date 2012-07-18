@@ -8,10 +8,10 @@ import org.restlet.resource.ResourceException;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.insieme.common.database.InsiemePersistenceConstants;
-import com.insieme.common.guice.SelfInjectingServerResource;
-import com.insieme.common.util.json.JSONUtil;
-import com.insieme.core.domain.dto.InsiemeException;
-import com.insieme.core.domain.dto.User;
+import com.insieme.common.domain.dto.InsiemeException;
+import com.insieme.common.domain.dto.User;
+import com.insieme.common.util.JSONUtil;
+import com.insieme.core.guice.SelfInjectingServerResource;
 import com.insieme.core.user.rest.handlers.AuthenticationResource;
 import com.insieme.core.user.service.UserService;
 import com.mysql.jdbc.StringUtils;
@@ -42,6 +42,7 @@ public class AuthenticationResourceImpl extends SelfInjectingServerResource impl
 	@Override
 	public String authenticateUser(String userRepresentation) {
 		try {
+			System.out.println(userRepresentation);
 			User postedUser = jsonUtil.deserializeRepresentation(userRepresentation, User.class);
 			if (StringUtils.isNullOrEmpty(postedUser.getUserId()) || StringUtils.isNullOrEmpty(postedUser.getPassword())) {
 				throw new InsiemeException("field userId or password is empty");
@@ -51,6 +52,7 @@ public class AuthenticationResourceImpl extends SelfInjectingServerResource impl
 						InsiemePersistenceConstants.INSIEME_ROOT, InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
 				
 				User user = userService.getUser(connection, postedUser.getUserId(), postedUser.getPassword());
+				System.out.println(jsonUtil.serializeRepresentation(user));
 				return jsonUtil.serializeRepresentation(user);			
 			}
 		} catch (InsiemeException e) {

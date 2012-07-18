@@ -1,9 +1,9 @@
-package com.insieme.common.guice;
+package com.insieme.core.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Injector;
 import com.google.inject.Provides;
-import com.insieme.common.guice.SelfInjectingServerResource.MembersInjector;
+import com.insieme.core.guice.SelfInjectingServerResource.MembersInjector;
 
 /**
  * Guice module for self injecting resources.

@@ -1,8 +1,8 @@
-package com.insieme.core.domain.dto;
+package com.insieme.common.domain.dto;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import com.insieme.common.util.json.JSONUtil;
+import com.insieme.common.util.JSONUtil;
 
 /**
  * Insieme exception that can easily be json-ified and transfered to client.

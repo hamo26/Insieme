@@ -9,8 +9,9 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.name.Named;
-import com.insieme.common.database.dto.PersistentEntity;
+import com.insieme.common.domain.dto.DTOEntity;
 import com.insieme.common.guice.InsiemeCommonModule;
+import com.insieme.common.util.JSONUtil;
 
 public class JSONUtilTest {
 	
@@ -39,7 +40,7 @@ public class JSONUtilTest {
 		assertEquals(JSON_STRING, result);
 	}
 	
-	private class TestPersistentDto extends PersistentEntity {
+	private class TestPersistentDto extends DTOEntity {
 		private int property1;
 		private String property2;
 		

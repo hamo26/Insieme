@@ -1,13 +1,12 @@
-package com.insieme.core.domain.dto;
+package com.insieme.common.domain.dto;
 
 import com.google.gson.annotations.SerializedName;
-import com.insieme.common.database.dto.PersistentEntity;
 
 /**
  * Simple user pojo that is structured to be serialized by JOOQ and automatically mapped.
  * Did not like the DTO generate by JOOQ so I chose to make my own.
  */
-public class User extends PersistentEntity {
+public class User extends DTOEntity {
 	
 	@SerializedName("user-id")
 	private String userId;

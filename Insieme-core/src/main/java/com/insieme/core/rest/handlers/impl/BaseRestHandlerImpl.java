@@ -6,9 +6,9 @@ import org.restlet.routing.Router;
 
 import com.google.inject.Guice;
 import com.insieme.common.guice.InsiemeCommonModule;
-import com.insieme.common.guice.SelfInjectingServerResourceModule;
-import com.insieme.common.guice.ServiceModule;
-import com.insieme.common.guice.TransactionModule;
+import com.insieme.core.guice.SelfInjectingServerResourceModule;
+import com.insieme.core.guice.ServiceModule;
+import com.insieme.core.guice.TransactionModule;
 import com.insieme.core.tracks.rest.handlers.impl.TracksResourceImpl;
 import com.insieme.core.user.rest.handlers.impl.AuthenticationResourceImpl;
 

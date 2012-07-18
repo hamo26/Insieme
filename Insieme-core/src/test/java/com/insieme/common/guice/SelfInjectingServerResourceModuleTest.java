@@ -18,6 +18,9 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Provides;
 import com.google.inject.name.Named;
+import com.insieme.core.guice.SelfInjectingServerResource;
+import com.insieme.core.guice.SelfInjectingServerResourceModule;
+import com.insieme.core.guice.ServiceModule;
 import com.insieme.core.user.service.UserService;
 import com.insieme.core.user.service.impl.UserServiceImpl;
 

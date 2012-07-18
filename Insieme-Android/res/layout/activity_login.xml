@@ -51,9 +51,8 @@
         android:layout_alignBottom="@+id/passwordTextId"
         android:layout_alignLeft="@+id/userNameInputId"
         android:ems="10"
-        android:inputType="numberPassword" >
-    </EditText>
-
+        android:inputType="textPassword"/>
+    
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
@@ -62,7 +61,8 @@
         android:layout_alignRight="@+id/passwordInputId"
         android:layout_below="@+id/passwordInputId"
         android:layout_marginTop="36dp"
-        android:text="@string/LoginButtonText"/>
+        android:text="@string/LoginButtonText"
+        android:onClick="loginUser"/>
 
     <ImageView
         android1:id="@+id/loginImageId"

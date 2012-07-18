@@ -9,6 +9,7 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.name.Named;
+import com.insieme.core.guice.ServiceModule;
 import com.insieme.core.user.service.UserService;
 import com.insieme.core.user.service.impl.UserServiceImpl;
 

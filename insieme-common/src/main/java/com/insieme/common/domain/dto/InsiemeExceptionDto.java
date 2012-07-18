@@ -1,11 +1,10 @@
-package com.insieme.core.domain.dto;
+package com.insieme.common.domain.dto;
 
-import com.insieme.common.database.dto.PersistentEntity;
 
 /**
  * Insieme exception dto to pass json exceptions to the client. May be completely unnecessary.
  */
-public class InsiemeExceptionDto extends PersistentEntity {
+public class InsiemeExceptionDto extends DTOEntity {
 	
 	private final String exception;
 	
