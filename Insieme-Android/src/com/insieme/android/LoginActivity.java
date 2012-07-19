@@ -13,8 +13,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.insieme.android.user.service.impl.LoginTask;
-import com.insieme.common.domain.dto.User;
+import com.insieme.common.domain.dto.InsiemeExceptionEntity;
+import com.insieme.common.domain.dto.UserEntity;
+import com.insieme.common.domain.rest.RestResult;
 
 @ContentView(R.layout.activity_login)
 public class LoginActivity extends RoboActivity{
@@ -25,7 +28,7 @@ public class LoginActivity extends RoboActivity{
 	private EditText userPasswordInput;
 	
 	@Inject
-	private LoginTask loginTask;
+	private Provider<LoginTask> loginTaskProvider;
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +50,14 @@ public class LoginActivity extends RoboActivity{
 	    			!StringUtils.hasText(userPassword)) {
 	    			Toast.makeText(this, "missing username or password.", Toast.LENGTH_LONG).show();
 	    	} else {
-	    		User loginUser = loginTask.execute(userId, userPassword).get();
-	    		Toast.makeText(this, "welcome: " + loginUser.getFirstName(), Toast.LENGTH_LONG).show();
+	    		RestResult<UserEntity> loginResult = loginTaskProvider.get().execute(userId, userPassword).get();
+	    		if (loginResult.isFailure()) {
+	    			InsiemeExceptionEntity insiemeExceptionEntity = loginResult.getError();
+	    			Toast.makeText(this, "welcome: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
+	    		} else {
+	    			UserEntity userEntity = loginResult.getRestResult();
+	    			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
+	    		}
 	    	}
     	} catch(Exception e) {
     		e.printStackTrace();

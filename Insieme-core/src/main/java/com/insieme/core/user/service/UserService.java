@@ -5,7 +5,7 @@ import java.sql.Connection;
 import com.google.inject.ImplementedBy;
 import com.insieme.common.database.transactions.Transaction;
 import com.insieme.common.domain.dto.InsiemeException;
-import com.insieme.common.domain.dto.User;
+import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.core.user.service.impl.UserServiceImpl;
 
 /**
@@ -22,7 +22,7 @@ public interface UserService {
 	 * @return the user
 	 */
 	@Transaction
-	public User getUser(Connection connection, String userId) throws InsiemeException;
+	public UserEntity getUser(Connection connection, String userId) throws InsiemeException;
 	
 	/**
 	 * Checks if a user is verified. Enforces that userid and password tuple
@@ -36,5 +36,5 @@ public interface UserService {
 	 * @return true, if is user verified
 	 */
 	@Transaction
-	public User getUser(Connection connection, String userId, String password) throws InsiemeException;
+	public UserEntity getUser(Connection connection, String userId, String password) throws InsiemeException;
 }

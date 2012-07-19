@@ -34,7 +34,8 @@ public class SelfInjectingServerResourceModuleTest extends Application {
 	    @Before public void createInjector() {
 	        Guice.createInjector(
 	            new ServiceModule(),
-	            new SelfInjectingServerResourceModule()
+	            new SelfInjectingServerResourceModule(),
+	            new InsiemeCommonModule()
 	        );
 	    }
 	 

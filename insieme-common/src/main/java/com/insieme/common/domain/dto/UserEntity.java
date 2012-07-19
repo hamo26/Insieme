@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Simple user pojo that is structured to be serialized by JOOQ and automatically mapped.
  * Did not like the DTO generate by JOOQ so I chose to make my own.
  */
-public class User extends DTOEntity {
+public class UserEntity extends RestEntity {
 	
 	@SerializedName("user-id")
 	private String userId;
@@ -23,7 +23,7 @@ public class User extends DTOEntity {
 	@SerializedName("email-address")
 	private String emailAddress;
 	
-	public User(final String USER_ID, final String FIRST_NAME, 
+	public UserEntity(final String USER_ID, final String FIRST_NAME, 
 				final String LAST_NAME, final String USER_PASSWORD, final String USER_EMAIL) {
 		this.userId = USER_ID;
 		this.firstName = FIRST_NAME;

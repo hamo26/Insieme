@@ -22,7 +22,7 @@ public class ServiceModuleTest {
 
 	@Before
 	public void createInjector() {
-		injector = Guice.createInjector(new ServiceModule());
+		injector = Guice.createInjector(new ServiceModule(), new InsiemeCommonModule());
 	}
 	
 	@Test

@@ -2,7 +2,7 @@ package com.insieme.common.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.insieme.common.domain.dto.DTOEntity;
+import com.insieme.common.domain.dto.RestEntity;
 
 
 
@@ -13,11 +13,11 @@ public class JSONUtil {
 		gson = new GsonBuilder().create();
 	}
 	
-	public <E extends DTOEntity> E deserializeRepresentation(String jsonRepresentation, Class<E> cls) {
+	public <E extends RestEntity> E deserializeRepresentation(String jsonRepresentation, Class<E> cls) {
 		return gson.fromJson(jsonRepresentation, cls);
 	}
 	
-	public <E extends DTOEntity> String serializeRepresentation(E persistentDto) {
+	public <E extends RestEntity> String serializeRepresentation(E persistentDto) {
 		return gson.toJson(persistentDto);
 	}
 }

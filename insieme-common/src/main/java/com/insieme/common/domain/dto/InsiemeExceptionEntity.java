@@ -1,14 +1,17 @@
 package com.insieme.common.domain.dto;
 
+import com.google.gson.annotations.SerializedName;
+
 
 /**
  * Insieme exception dto to pass json exceptions to the client. May be completely unnecessary.
  */
-public class InsiemeExceptionDto extends DTOEntity {
+public class InsiemeExceptionEntity extends RestEntity {
 	
+	@SerializedName("insieme-error")
 	private final String exception;
 	
-	public InsiemeExceptionDto(final String exception) {
+	public InsiemeExceptionEntity(final String exception) {
 		this.exception = exception;
 	}
 	

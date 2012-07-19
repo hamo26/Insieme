@@ -9,7 +9,8 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.insieme.common.database.InsiemePersistenceConstants;
 import com.insieme.common.domain.dto.InsiemeException;
-import com.insieme.common.domain.dto.User;
+import com.insieme.common.domain.dto.InsiemeExceptionFactory;
+import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.util.JSONUtil;
 import com.insieme.core.guice.SelfInjectingServerResource;
 import com.insieme.core.user.rest.handlers.AuthenticationResource;
@@ -34,6 +35,9 @@ public class AuthenticationResourceImpl extends SelfInjectingServerResource impl
 	@Named("jsonUtil")
 	private JSONUtil jsonUtil;
 	
+	@Inject
+	private InsiemeExceptionFactory insiemeExcptionFactory;
+	
 	@Override
 	protected void doInit() throws ResourceException {
 		super.doInit();
@@ -42,23 +46,22 @@ public class AuthenticationResourceImpl extends SelfInjectingServerResource impl
 	@Override
 	public String authenticateUser(String userRepresentation) {
 		try {
-			System.out.println(userRepresentation);
-			User postedUser = jsonUtil.deserializeRepresentation(userRepresentation, User.class);
+			UserEntity postedUser = jsonUtil.deserializeRepresentation(userRepresentation, UserEntity.class);
 			if (StringUtils.isNullOrEmpty(postedUser.getUserId()) || StringUtils.isNullOrEmpty(postedUser.getPassword())) {
-				throw new InsiemeException("field userId or password is empty");
+				throw insiemeExcptionFactory.createInsiemeException("field userId or password is empty");
 			} else {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				connection = DriverManager.getConnection(InsiemePersistenceConstants.INSIEME_URL, 
 						InsiemePersistenceConstants.INSIEME_ROOT, InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
 				
-				User user = userService.getUser(connection, postedUser.getUserId(), postedUser.getPassword());
+				UserEntity user = userService.getUser(connection, postedUser.getUserId(), postedUser.getPassword());
 				System.out.println(jsonUtil.serializeRepresentation(user));
 				return jsonUtil.serializeRepresentation(user);			
 			}
 		} catch (InsiemeException e) {
 			return e.serializeJsonException();
 		} catch (Exception e) {
-			return new InsiemeException(e.getMessage()).serializeJsonException();
+			return insiemeExcptionFactory.createInsiemeException(e.getMessage()).serializeJsonException();
 		}
 	}
 }

@@ -4,7 +4,7 @@ package com.insieme.common.database;
  * A place holder for some of the common persistent constants.
  */
 public class InsiemePersistenceConstants {
-	
+
 	/** database url for sql connections.*/
 	public static final String INSIEME_URL = "jdbc:mysql://localhost:3306/insieme";
 	
