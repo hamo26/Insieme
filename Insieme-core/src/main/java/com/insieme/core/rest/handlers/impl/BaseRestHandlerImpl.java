@@ -11,6 +11,7 @@ import com.insieme.core.guice.ServiceModule;
 import com.insieme.core.guice.TransactionModule;
 import com.insieme.core.tracks.rest.handlers.impl.TracksResourceImpl;
 import com.insieme.core.user.rest.handlers.impl.AuthenticationResourceImpl;
+import com.insieme.core.user.rest.handlers.impl.RegistrationResourceImpl;
 
 /**
  * The Base Rest Handler which defines all url binding and delegates to the appropriate resource.
@@ -42,7 +43,7 @@ public class BaseRestHandlerImpl extends Application {
         // Defines only one route  
         router.attach("/login", AuthenticationResourceImpl.class);  
         router.attach("/tracks/{trackId}", TracksResourceImpl.class);
-  
+        router.attach("/register", RegistrationResourceImpl.class);
         return router;  
     }  
 }

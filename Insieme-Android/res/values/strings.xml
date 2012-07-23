@@ -7,6 +7,10 @@
     <string name="passwordText">PASSWORD</string>
     <string name="LoginButtonText">LOGIN</string>
     <string name="LoginImageDescription">Login image </string>
+    <string name="firstNameText">First Name</string>
+    <string name="lastNameText">Last Name</string>
+    <string name="emailAddressText">Email Address</string>
+    <string name="registerButtonText">REGISTER</string>
     
 	
 </resources>

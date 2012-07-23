@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.inject.Inject;
 import com.insieme.common.database.dto.InsiemeFactory;
 import com.insieme.common.database.dto.Tables;
+import com.insieme.common.database.dto.tables.records.UsersRecord;
 import com.insieme.common.domain.dto.InsiemeException;
 import com.insieme.common.domain.dto.InsiemeExceptionFactory;
 import com.insieme.common.domain.dto.UserEntity;
@@ -30,31 +31,34 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public UserEntity getUser(Connection connection, String userId) throws InsiemeException{
+	public void registerUser(Connection connection, UserEntity userEntity) throws InsiemeException{
 		InsiemeFactory createQuery = new InsiemeFactory(connection);
 		List<UserEntity> userResult = createQuery.select()
 											.from(Tables.USERS)
-											.where(Tables.USERS.USER_ID.equal(userId))
+											.where(Tables.USERS.USER_ID.equal(userEntity.getUserId()))
+											.or(Tables.USERS.USER_EMAIL.equal(userEntity.getEmailAddress()))
+											.or(Tables.USERS.USER_PASSWORD.equal(userEntity.getPassword()))
 											.fetchInto(UserEntity.class);
-		if (userResult.size() > 1) {
-			throw insiemeExceptionFactory.createInsiemeException("User id was not unique.");
-		} else if(userResult.isEmpty()) {
-			throw insiemeExceptionFactory.createInsiemeException("User with user-id:" + userId + " does not exist");
+		if (!userResult.isEmpty()) {
+			throw insiemeExceptionFactory.createInsiemeException("User id or email address was not unique.");
+		} else {
+			createQuery.insertInto(Tables.USERS, Tables.USERS.USER_ID, Tables.USERS.FIRST_NAME, 
+													Tables.USERS.LAST_NAME, Tables.USERS.USER_PASSWORD, Tables.USERS.USER_EMAIL)
+												   .values(userEntity.getUserId(), 
+																				userEntity.getFirstName(), userEntity.getLastName(), userEntity.getPassword(), 
+																				userEntity.getEmailAddress()).execute();
 		}
-		return userResult.iterator().next();
 	}
 
 	@Override
 	public UserEntity getUser(Connection connection, String userId, String encryptedPassword) throws InsiemeException {
-		InsiemeFactory createQuery = new InsiemeFactory(connection);
-		List<UserEntity> userResult = createQuery.select()
+		InsiemeFactory retrieveQuery = new InsiemeFactory(connection);
+		List<UserEntity> userResult = retrieveQuery.select()
 											.from(Tables.USERS)
 											.where(Tables.USERS.USER_ID.equal(userId))
 											.and(Tables.USERS.USER_PASSWORD.equal(encryptedPassword))
 											.fetchInto(UserEntity.class);
-		if (userResult.size() > 1) {
-			throw insiemeExceptionFactory.createInsiemeException("User id was not unique.");
-		} else if(userResult.isEmpty()) {
+		if(userResult.isEmpty()) {
 			throw insiemeExceptionFactory.createInsiemeException("User with id:" + userId + " not found.");
 		}
 		return userResult.iterator().next();

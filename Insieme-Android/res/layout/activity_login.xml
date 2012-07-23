@@ -31,7 +31,7 @@
         android:textAllCaps="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColorLink="@android:color/white"
-        android:textSize="20dp" 
+        android:textSize="20dp"
         android1:textColor="#FFFFFF" />
 
     <EditText
@@ -51,8 +51,8 @@
         android:layout_alignBottom="@+id/passwordTextId"
         android:layout_alignLeft="@+id/userNameInputId"
         android:ems="10"
-        android:inputType="textPassword"/>
-    
+        android:inputType="textPassword" />
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
@@ -61,8 +61,8 @@
         android:layout_alignRight="@+id/passwordInputId"
         android:layout_below="@+id/passwordInputId"
         android:layout_marginTop="36dp"
-        android:text="@string/LoginButtonText"
-        android:onClick="loginUser"/>
+        android:onClick="loginUser"
+        android:text="@string/LoginButtonText" />
 
     <ImageView
         android1:id="@+id/loginImageId"
@@ -73,5 +73,144 @@
         android1:layout_marginBottom="31dp"
         android1:contentDescription="@string/LoginImageDescription"
         android1:src="@drawable/login" />
+
+    <ImageView
+        android1:id="@+id/registerImageId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentRight="true"
+        android1:layout_alignParentTop="true"
+        android1:layout_marginRight="261dp"
+        android1:layout_marginTop="79dp"
+        android1:contentDescription="@string/RegisterImageDescription"
+        android1:src="@drawable/Register" />
+
+    <TextView
+        android1:id="@+id/registerUserNameTextId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_above="@+id/loginImageId"
+        android1:layout_toLeftOf="@+id/registerImageId"
+        android1:text="@string/userNameText"
+        android1:textAllCaps="true"
+        android1:textAppearance="?android:attr/textAppearanceLarge"
+        android1:textColor="#FFFFFF"
+        android1:textColorLink="@android:color/white"
+        android1:textSize="20dp" />
+
+    <TextView
+        android1:id="@+id/registerLastNameTextId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_above="@+id/passwordInputId"
+        android1:layout_marginBottom="27dp"
+        android1:layout_toLeftOf="@+id/registerImageId"
+        android1:text="@string/lastNameText"
+        android1:textAllCaps="true"
+        android1:textAppearance="?android:attr/textAppearanceLarge"
+        android1:textColor="#FFFFFF"
+        android1:textColorLink="@android:color/white"
+        android1:textSize="20dp" />
+
+    <TextView
+        android1:id="@+id/registerEmailAddressTextId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/registerLastNameTextId"
+        android1:layout_below="@+id/registerLastNameTextId"
+        android1:text="@string/emailAddressText"
+        android1:textAllCaps="true"
+        android1:textAppearance="?android:attr/textAppearanceLarge"
+        android1:textColor="#FFFFFF"
+        android1:textColorLink="@android:color/white"
+        android1:textSize="20dp" />
+
+    <TextView
+        android1:id="@+id/registerPasswordTextId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBottom="@+id/loginImageId"
+        android1:layout_toLeftOf="@+id/registerImageId"
+        android1:text="@string/passwordText"
+        android1:textAllCaps="true"
+        android1:textAppearance="?android:attr/textAppearanceLarge"
+        android1:textColor="#FFFFFF"
+        android1:textColorLink="@android:color/white"
+        android1:textSize="20dp" />
+
+    <TextView
+        android1:id="@+id/registerFirstNameTextId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBottom="@+id/userNameInputId"
+        android1:layout_alignLeft="@+id/registerLastNameTextId"
+        android1:text="@string/firstNameText"
+        android1:textAllCaps="true"
+        android1:textAppearance="?android:attr/textAppearanceLarge"
+        android1:textColor="#FFFFFF"
+        android1:textColorLink="@android:color/white"
+        android1:textSize="20dp" />
+
+    <EditText
+        android1:id="@+id/registerLastNameInputId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBaseline="@+id/registerLastNameTextId"
+        android1:layout_alignBottom="@+id/registerLastNameTextId"
+        android1:layout_marginLeft="38dp"
+        android1:layout_toRightOf="@+id/registerEmailAddressTextId"
+        android1:ems="10"
+        android1:inputType="textPersonName" />
+
+    <EditText
+        android1:id="@+id/registerFirstNameInputId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/registerLastNameInputId"
+        android1:layout_alignTop="@+id/registerFirstNameTextId"
+        android1:ems="10"
+        android1:inputType="textPersonName" />
+
+    <EditText
+        android1:id="@+id/registerEmailInputId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/registerLastNameInputId"
+        android1:layout_below="@+id/registerLastNameTextId"
+        android1:ems="10"
+        android1:inputType="textPersonName" />
+
+    <EditText
+        android1:id="@+id/registerPasswordInputId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBaseline="@+id/registerPasswordTextId"
+        android1:layout_alignBottom="@+id/registerPasswordTextId"
+        android1:layout_alignLeft="@+id/registerFirstNameInputId"
+        android1:ems="10"
+        android1:inputType="textPersonName" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android1:id="@+id/registerUserInputId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_above="@+id/loginImageId"
+        android1:layout_alignLeft="@+id/registerPasswordInputId"
+        android1:ems="10"
+        android1:inputType="textPersonName" />
+
+    <Button
+        android1:id="@+id/registerButtonId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignBottom="@+id/loginButton"
+        android1:layout_alignLeft="@+id/registerEmailInputId"
+        android1:layout_alignRight="@+id/registerEmailInputId"
+        android1:layout_alignTop="@+id/loginButton"
+        android1:onClick="loginUser"
+        android1:text="@string/registerButtonText" />
 
 </RelativeLayout>
