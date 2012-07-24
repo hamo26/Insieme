@@ -8,19 +8,29 @@ import com.google.gson.annotations.SerializedName;
  */
 public class UserEntity extends RestEntity {
 	
-	@SerializedName("user-id")
+	public static final String EMAIL_ADDRESS = "email-address";
+
+	public static final String PASSWORD = "password";
+
+	public static final String LAST_NAME = "last-name";
+
+	public static final String FIRST_NAME = "first-name";
+
+	public static final String USER_ID = "user-id";
+
+	@SerializedName(USER_ID)
 	private String userId;
 	
-	@SerializedName("first-name")
+	@SerializedName(FIRST_NAME)
 	private String firstName;
 	
-	@SerializedName("last-name")
+	@SerializedName(LAST_NAME)
 	private String lastName;
 	
-	@SerializedName("password")
+	@SerializedName(PASSWORD)
 	private String password;
 	
-	@SerializedName("email-address")
+	@SerializedName(EMAIL_ADDRESS)
 	private String emailAddress;
 	
 	public UserEntity(final String USER_ID, final String FIRST_NAME, 

@@ -25,6 +25,7 @@ public class LoginTask extends AsyncTask<String, Integer, RestResult<UserEntity>
 	private final String authenticationResourceUri;
 	private final RestResultHandler restResultHandler;
 	
+	@SuppressWarnings("unchecked")
 	@Inject
 	public LoginTask(@Named("restTemplate") 
 							final RestTemplate restTemplate,

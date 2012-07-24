@@ -82,8 +82,8 @@
         android1:layout_alignParentTop="true"
         android1:layout_marginRight="261dp"
         android1:layout_marginTop="79dp"
-        android1:contentDescription="@string/RegisterImageDescription"
-        android1:src="@drawable/Register" />
+        android1:contentDescription="@string/RegisterImageContentDescription"
+        android1:src="@drawable/register" />
 
     <TextView
         android1:id="@+id/registerUserNameTextId"
@@ -189,8 +189,6 @@
         android1:layout_alignLeft="@+id/registerFirstNameInputId"
         android1:ems="10"
         android1:inputType="textPersonName" >
-
-        <requestFocus />
     </EditText>
 
     <EditText
@@ -210,7 +208,7 @@
         android1:layout_alignLeft="@+id/registerEmailInputId"
         android1:layout_alignRight="@+id/registerEmailInputId"
         android1:layout_alignTop="@+id/loginButton"
-        android1:onClick="loginUser"
+        android1:onClick="registerUser"
         android1:text="@string/registerButtonText" />
 
 </RelativeLayout>

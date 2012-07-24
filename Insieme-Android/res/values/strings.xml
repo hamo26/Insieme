@@ -11,6 +11,7 @@
     <string name="lastNameText">Last Name</string>
     <string name="emailAddressText">Email Address</string>
     <string name="registerButtonText">REGISTER</string>
+    <string name="RegisterImageContentDescription">register image</string>
     
 	
 </resources>

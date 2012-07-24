@@ -1,8 +1,6 @@
 package com.insieme.android;
 
 
-import org.springframework.util.StringUtils;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
@@ -28,6 +26,21 @@ public class LoginActivity extends RoboActivity{
 	@InjectView(R.id.passwordInputId)
 	private EditText userPasswordInput;
 	
+	@InjectView(R.id.registerEmailInputId)
+	private EditText registerEmailInput;
+	
+	@InjectView(R.id.registerFirstNameInputId)
+	private EditText registerFirstNameInput;
+	
+	@InjectView(R.id.registerLastNameInputId)
+	private EditText registerLastNameInput;
+	
+	@InjectView(R.id.registerPasswordInputId)
+	private EditText regiterPasswordInput;
+	
+	@InjectView(R.id.registerUserInputId)
+	private EditText registerUserIdInput;
+	
 	@Inject
 	private Provider<LoginTask> loginTaskProvider;
 	
@@ -49,27 +62,43 @@ public class LoginActivity extends RoboActivity{
     	try{
 	    	String userPassword = userPasswordInput.getText().toString();
 			String userId = userIdInput.getText().toString();
-			
-			if (!StringUtils.hasText(userId) || 
-	    			!StringUtils.hasText(userPassword)) {
-	    			Toast.makeText(this, "missing username or password.", Toast.LENGTH_LONG).show();
-	    	} else {
-	    		RestResult<UserEntity> loginResult = loginTaskProvider.get().execute(userId, userPassword).get();
-	    		if (loginResult.isFailure()) {
-	    			InsiemeExceptionEntity insiemeExceptionEntity = loginResult.getError();
-	    			Toast.makeText(this, "welcome: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
-	    		} else {
-	    			UserEntity userEntity = loginResult.getRestResult();
-	    			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
-	    		}
-	    	}
+    		
+			RestResult<UserEntity> loginResult = loginTaskProvider.get().execute(userId, userPassword).get();
+    		if (loginResult.isFailure()) {
+    			InsiemeExceptionEntity insiemeExceptionEntity = loginResult.getError();
+    			Toast.makeText(this, "welcome: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
+    		} else {
+    			UserEntity userEntity = loginResult.getRestResult();
+    			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
+    		}
     	} catch(Exception e) {
     		e.printStackTrace();
     	}
     }
     
     public void registerUser(View v) {
+    	String userId = registerUserIdInput.getText().toString();
+    	String userPassword = regiterPasswordInput.getText().toString();
+    	String userFirstName = registerFirstNameInput.getText().toString();
+    	String userLastName  = registerLastNameInput.getText().toString();
+    	String userEmail = registerEmailInput.getText().toString();
     	
+    	try{
+	    	RestResult<UserEntity> registerResult = registerTaskProvider.get()
+	    			.execute(userId, userPassword, userFirstName, userLastName, userEmail)
+	    			.get();
+	    	
+	    	if (registerResult.isFailure()) {
+    			InsiemeExceptionEntity insiemeExceptionEntity = registerResult.getError();
+    			Toast.makeText(this, "registration failed: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
+    		} else {
+    			UserEntity userEntity = registerResult.getRestResult();
+    			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
+    		}
+	    	
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
     }
     
     @Override

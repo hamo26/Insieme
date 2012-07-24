@@ -24,6 +24,7 @@ public class RegisterTask extends AsyncTask<String, Integer, RestResult<UserEnti
 	private final String registrationResourceUri;
 	private final RestResultHandler restResultHandler;
 	
+	@SuppressWarnings("unchecked")
 	@Inject
 	public RegisterTask(@Named("restTemplate") 
 							final RestTemplate restTemplate,
