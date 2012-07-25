@@ -7,11 +7,13 @@
     <string name="passwordText">PASSWORD</string>
     <string name="LoginButtonText">LOGIN</string>
     <string name="LoginImageDescription">Login image </string>
-    <string name="firstNameText">First Name</string>
-    <string name="lastNameText">Last Name</string>
-    <string name="emailAddressText">Email Address</string>
+    <string name="firstNameText">FIRST NAME</string>
+    <string name="lastNameText">LAST NAME</string>
+    <string name="emailAddressText">EMAIL ADDRESS</string>
     <string name="registerButtonText">REGISTER</string>
     <string name="RegisterImageContentDescription">register image</string>
+    <string name="TrackListImageContentDescription">track list image</string>
+    <string name="title_activity_main">Insieme</string>
     
 	
 </resources>
