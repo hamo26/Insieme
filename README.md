@@ -1,11 +1,6 @@
 Insieme
 =======
 
-Expose, Listen and Share Music Together 
-
-Insieme
-=======
-
 Expose, Listen and Share Music Together.
 
 Current Scope: 
