@@ -8,7 +8,7 @@ import org.aopalliance.intercept.MethodInvocation;
 
 
 public class TransactionInterceptor implements MethodInterceptor {
-	
+
 	@Override
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		Method method = invocation.getMethod();
@@ -35,4 +35,3 @@ public class TransactionInterceptor implements MethodInterceptor {
 		}
 	}
 }
-

@@ -4,9 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 
 import com.google.inject.Inject;
-import com.insieme.common.database.dto.InsiemeFactory;
-import com.insieme.common.database.dto.Tables;
-import com.insieme.common.database.dto.tables.records.UsersRecord;
+import com.insieme.common.database.InsiemeFactory;
+import com.insieme.common.database.Tables;
 import com.insieme.common.domain.dto.InsiemeException;
 import com.insieme.common.domain.dto.InsiemeExceptionFactory;
 import com.insieme.common.domain.dto.UserEntity;
