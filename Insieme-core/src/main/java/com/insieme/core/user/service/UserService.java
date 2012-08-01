@@ -26,7 +26,6 @@ public interface UserService {
 	 * @param connection the sql connection
 	 * @return true, if is user verified
 	 */
-	@Transaction
 	public UserEntity getUser(Connection connection, String userId, String password) throws InsiemeException;
 
 	/**
@@ -38,5 +37,6 @@ public interface UserService {
 	 * @param userEntity the user entity
 	 * @throws InsiemeException the insieme exception
 	 */
-	void registerUser(Connection connection, UserEntity userEntity) throws InsiemeException;
+	@Transaction
+	public void registerUser(Connection connection, UserEntity userEntity) throws InsiemeException;
 }

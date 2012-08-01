@@ -9,6 +9,7 @@ import com.insieme.common.guice.InsiemeCommonModule;
 import com.insieme.core.guice.SelfInjectingServerResourceModule;
 import com.insieme.core.guice.ServiceModule;
 import com.insieme.core.guice.TransactionModule;
+import com.insieme.core.tracks.rest.handlers.impl.RegisterTrackResourceImpl;
 import com.insieme.core.tracks.rest.handlers.impl.TracksResourceImpl;
 import com.insieme.core.user.rest.handlers.impl.AuthenticationResourceImpl;
 import com.insieme.core.user.rest.handlers.impl.RegistrationResourceImpl;
@@ -43,6 +44,7 @@ public class BaseRestHandlerImpl extends Application {
         // Defines only one route  
         router.attach("/login", AuthenticationResourceImpl.class);  
         router.attach("/tracks/{trackId}", TracksResourceImpl.class);
+        router.attach("/tracks", RegisterTrackResourceImpl.class);
         router.attach("/register", RegistrationResourceImpl.class);
         return router;  
     }  

@@ -1,4 +1,4 @@
-package com.insieme.core.user.service.util;
+package com.insieme.core.service.util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 import com.insieme.common.domain.dto.UserEntity;
 import com.mysql.jdbc.StringUtils;
 
-public class UserUtil {
+public class UserValidator {
 
 	@SuppressWarnings("serial")
 	public static Collection<String> getMissingUserFields(final UserEntity user, final Boolean isLogin) {

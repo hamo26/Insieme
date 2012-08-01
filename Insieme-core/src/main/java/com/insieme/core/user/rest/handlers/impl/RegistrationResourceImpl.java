@@ -15,9 +15,9 @@ import com.insieme.common.domain.dto.InsiemeExceptionFactory;
 import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.util.JSONUtil;
 import com.insieme.core.guice.SelfInjectingServerResource;
+import com.insieme.core.service.util.UserValidator;
 import com.insieme.core.user.rest.handlers.RegistrationResource;
 import com.insieme.core.user.service.UserService;
-import com.insieme.core.user.service.util.UserUtil;
 
 public class RegistrationResourceImpl extends SelfInjectingServerResource
 		implements RegistrationResource {
@@ -46,7 +46,7 @@ public class RegistrationResourceImpl extends SelfInjectingServerResource
 		try {
 			UserEntity postedUser = jsonUtil.deserializeRepresentation(
 					userRepresentation, UserEntity.class);
-			Collection<String> missingFields = UserUtil.getMissingUserFields(
+			Collection<String> missingFields = UserValidator.getMissingUserFields(
 					postedUser, false);
 			if (!missingFields.isEmpty()) {
 				throw insiemeExcptionFactory

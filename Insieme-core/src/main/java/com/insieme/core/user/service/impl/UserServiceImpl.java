@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 		if(userResult.isEmpty()) {
 			throw insiemeExceptionFactory.createInsiemeException("User with id:" + userId + " not found.");
 		}
-		return userResult.iterator().next();
+		return userResult.get(0);
 	}
 
 }

@@ -55,7 +55,6 @@ public class AuthenticationResourceImpl extends SelfInjectingServerResource impl
 						InsiemePersistenceConstants.INSIEME_ROOT, InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
 				
 				UserEntity user = userService.getUser(connection, postedUser.getUserId(), postedUser.getPassword());
-				System.out.println(jsonUtil.serializeRepresentation(user));
 				return jsonUtil.serializeRepresentation(user);			
 			}
 		} catch (InsiemeException e) {
