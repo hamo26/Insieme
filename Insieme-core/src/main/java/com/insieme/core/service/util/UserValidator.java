@@ -10,6 +10,10 @@ import java.util.Map.Entry;
 import com.insieme.common.domain.dto.UserEntity;
 import com.mysql.jdbc.StringUtils;
 
+/**
+ * Convenience utility to validate user fields. 
+ * For now, only checks for empty fields.
+ */
 public class UserValidator {
 
 	@SuppressWarnings("serial")

@@ -2,6 +2,8 @@ package com.insieme.core.guice;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
+import com.insieme.core.artist.service.ArtistService;
+import com.insieme.core.artist.service.impl.ArtistServiceImpl;
 import com.insieme.core.track.service.TrackService;
 import com.insieme.core.track.service.impl.TrackServiceImpl;
 import com.insieme.core.user.service.UserService;
@@ -16,6 +18,7 @@ public class ServiceModule extends AbstractModule {
 	protected void configure() {
 		bind(UserService.class).annotatedWith(Names.named("userService")).to(UserServiceImpl.class);
 		bind(TrackService.class).annotatedWith(Names.named("trackService")).to(TrackServiceImpl.class);
+		bind(ArtistService.class).annotatedWith(Names.named("artistService")).to(ArtistServiceImpl.class);
 	}
 
 }

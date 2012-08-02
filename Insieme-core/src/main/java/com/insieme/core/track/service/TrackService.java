@@ -7,6 +7,9 @@ import com.insieme.common.domain.dto.InsiemeException;
 import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.core.track.service.impl.TrackServiceImpl;
 
+/**
+ *  Peristence track service used by resources to get tracks.
+ */
 @ImplementedBy(TrackServiceImpl.class)
 public interface TrackService {
 
@@ -28,4 +31,12 @@ public interface TrackService {
 	 * @throws InsiemeException the insieme exception
 	 */
 	public void registerTrack(Connection connection, TrackEntity trackEntity) throws InsiemeException;
+
+	/**
+	 * Update a track by a specific artist..
+	 *
+	 * @param connection the connection
+	 * @param trackEntity the track entity
+	 */
+	public void updateTrack(Connection connection, TrackEntity trackEntity) throws InsiemeException;
 }

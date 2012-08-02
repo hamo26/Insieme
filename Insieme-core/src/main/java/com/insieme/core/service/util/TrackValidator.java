@@ -9,6 +9,10 @@ import java.util.Map.Entry;
 import com.insieme.common.domain.dto.TrackEntity;
 import com.mysql.jdbc.StringUtils;
 
+/**
+ * Convenience utility to validate track fields. 
+ * For now, only checks for empty fields.
+ */
 public class TrackValidator {
 
 	@SuppressWarnings("serial")
@@ -22,6 +26,7 @@ public class TrackValidator {
 				put(TrackEntity.GENRE, trackEntity.getGenre());
 				put(TrackEntity.NAME, trackEntity.getName());
 				put(TrackEntity.TRACK_ID, trackEntity.getTrackId());
+				put(TrackEntity.DOWNLOAD_COUNT, String.valueOf(trackEntity.getDownloadCount()));
 			}
 		};
 
@@ -30,6 +35,7 @@ public class TrackValidator {
 				missingTrackFields.add(entry.getKey());
 			}
 		}
+		
 		return missingTrackFields;
 	}
 }

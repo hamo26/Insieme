@@ -57,4 +57,24 @@ public class TrackServiceImpl implements TrackService {
 						   trackEntity.getTrackId(), trackEntity.getName()).execute();
 		}
 	}
+
+	@Override
+	public void updateTrack(Connection connection, TrackEntity trackEntity) throws InsiemeException {
+		InsiemeFactory createQuery = new InsiemeFactory(connection);
+		List<TrackEntity> result = createQuery.select()
+				.from(Tables.TRACKS)
+				.where(Tables.TRACKS.TRACK_ID.equal(trackEntity.getTrackId()))
+				.fetchInto(TrackEntity.class);
+		if (result.isEmpty()) {
+			throw insiemeExceptionFactory.createInsiemeException("Track with id: " + trackEntity.getTrackId() + " does not exist");
+		} else {
+			createQuery.update(Tables.TRACKS)
+			.set(Tables.TRACKS.DESCRIPTION, trackEntity.getDescription())
+			.set(Tables.TRACKS.DOWNLOAD_COUNT, trackEntity.getDownloadCount())
+			.set(Tables.TRACKS.GENRE, trackEntity.getGenre())
+			.set(Tables.TRACKS.TRACK_NAME, trackEntity.getTrackId())
+			.where(Tables.TRACKS.TRACK_ID.equal(trackEntity.getTrackId()))
+			.execute();
+		}
+	}
 }

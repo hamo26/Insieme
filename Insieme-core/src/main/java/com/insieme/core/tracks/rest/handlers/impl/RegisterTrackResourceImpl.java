@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.util.Collection;
 
 import org.restlet.resource.Post;
+import org.restlet.resource.Put;
 import org.restlet.resource.ResourceException;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.insieme.common.database.InsiemePersistenceConstants;
-import com.insieme.common.database.transactions.Transaction;
 import com.insieme.common.domain.dto.InsiemeException;
 import com.insieme.common.domain.dto.InsiemeExceptionFactory;
 import com.insieme.common.domain.dto.TrackEntity;
@@ -45,7 +45,6 @@ public class RegisterTrackResourceImpl extends SelfInjectingServerResource imple
 	
 	@Override
 	@Post
-	@Transaction
 	public String registerTrack(String trackRepresentation) throws InsiemeException {
 		try {
 			TrackEntity trackEntity = jsonUtil.deserializeRepresentation(trackRepresentation, TrackEntity.class);
@@ -68,5 +67,32 @@ public class RegisterTrackResourceImpl extends SelfInjectingServerResource imple
 			return insiemeExceptionFactory.createInsiemeException(e.getLocalizedMessage()).serializeJsonException();
 		}
 	}
+
+	@Override
+	@Put
+	public String updateTrack(String trackRepresentation)
+			throws InsiemeException {
+		try {
+			TrackEntity trackEntity = jsonUtil.deserializeRepresentation(trackRepresentation, TrackEntity.class);
+			Collection<String> missingTrackFields = TrackValidator.getMissingTrackFields(trackEntity);
+			if (!missingTrackFields.isEmpty()) {
+				throw insiemeExceptionFactory.createInsiemeException("missing Fields: " + missingTrackFields.toString());
+			} else {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				connection = DriverManager.getConnection(
+						InsiemePersistenceConstants.INSIEME_URL,
+						InsiemePersistenceConstants.INSIEME_ROOT,
+						InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
+				
+				trackService.updateTrack(connection, trackEntity);
+				return jsonUtil.serializeRepresentation(trackEntity);
+			}
+		} catch (InsiemeException e) {
+			return e.serializeJsonException();
+		} catch (Exception e) {
+			return insiemeExceptionFactory.createInsiemeException(e.getLocalizedMessage()).serializeJsonException();
+		}
+	}
+	
 
 }
