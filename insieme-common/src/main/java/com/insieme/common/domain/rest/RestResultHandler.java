@@ -2,8 +2,8 @@ package com.insieme.common.domain.rest;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import com.insieme.common.domain.dto.RestEntity;
 import com.insieme.common.domain.dto.InsiemeExceptionEntity;
+import com.insieme.common.domain.dto.RestEntity;
 import com.insieme.common.domain.rest.RestResult.RestResultBuilder;
 import com.insieme.common.util.JSONUtil;
 
@@ -46,4 +46,22 @@ public class RestResultHandler {
 		}
 		return restResult;
 	}
+	
+	/**
+	 * Creates an error RestResult for a task to return. 
+	 * 
+	 * TODO: Reconsider if this is the right place for this. 
+	 * 		 Currently, the android client is using this method to throw task exceptions.
+	 *
+	 * @param error the error
+	 * @return the rest result
+	 */
+	public <E extends RestEntity> RestResult<E> createErrorResult(String error, Class<E> expectedType) {
+		RestResultBuilder<E> restResultBuilder = new RestResult.RestResultBuilder<E>();
+		return restResultBuilder
+				.setError(new InsiemeExceptionEntity(error))
+				.build();
+	}
+	
+	
 }

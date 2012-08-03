@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android1="http://schemas.android.com/apk/res/android"
+    android1:id="@+id/trackName"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000" >
+
+    <ImageView
+        android1:id="@+id/trackListImageId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentLeft="true"
+        android1:layout_alignParentTop="true"
+        android1:layout_marginTop="30dp"
+        android1:contentDescription="@string/TrackListImageContentDescription"
+        android1:src="@drawable/tracklist" />
+
+
+    <ScrollView
+        android1:id="@+id/trackListScrollViewId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentLeft="true"
+        android1:layout_below="@+id/trackListImageId"
+        android1:layout_marginTop="63dp" >
+
+        <LinearLayout
+            android1:id="@+id/trackListLayoutId"
+            android1:layout_width="362dp"
+            android1:layout_height="600dp"
+            android1:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android1:id="@+id/trackInfoLayoutId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignParentRight="true"
+        android1:layout_alignTop="@+id/trackListImageId"
+        android1:layout_marginRight="209dp" >
+    	
+    	<ImageView
+	        android1:id="@+id/trackInfoImageId"
+	        android1:layout_width="wrap_content"
+	        android1:layout_height="wrap_content"
+	        android1:layout_alignBottom="@+id/trackListImageId"
+	        android:layout_marginBottom="50dp"
+	        android1:contentDescription="@string/trackInfoImageContentDescription"
+	        android1:src="@drawable/trackinfo" />
+
+        <TextView
+            android1:id="@+id/trackNameTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/trackInfoImageId"
+	        android:layout_marginBottom="50dp"
+	        android:layout_marginRight="10dp"
+            android1:text="@string/trackNameText"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+        <TextView
+            android1:id="@+id/trackNameValueTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/trackInfoImageId"
+	        android1:layout_toRightOf="@+id/trackNameTextId"
+	        android1:text="@string/trackNameText"
+	        android:layout_marginBottom="50dp"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#00FFFF" />
+	    <TextView
+	        android1:id="@+id/trackGenreTextId"
+	        android1:layout_width="wrap_content"
+	        android1:layout_height="wrap_content"
+	        android1:layout_below="@+id/trackNameTextId"
+	        android1:text="@string/trackGenreText"
+	        android:layout_marginBottom="50dp"
+	        android:layout_marginRight="10dp"
+	        android1:textAppearance="?android:attr/textAppearanceLarge"
+	        android1:textColor="#FFFFFF" />
+	     <TextView
+            android1:id="@+id/trackGenreValueTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/trackNameTextId"
+	        android1:layout_toRightOf="@+id/trackGenreTextId"
+	        android1:text="@string/trackGenreText"
+	        android:layout_marginBottom="50dp"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#00FFFF" />
+	    <TextView
+	        android1:id="@+id/trackDescriptionTextId"
+	        android1:layout_width="wrap_content"
+	        android1:layout_height="wrap_content"
+	        android:layout_marginBottom="50dp"
+	        android:layout_marginRight="10dp"
+	        android1:layout_below="@+id/trackGenreTextId"
+	        android1:text="@string/trackDescriptionText"
+	        android1:textAppearance="?android:attr/textAppearanceLarge"
+	        android1:textColor="#FFFFFF" />
+	    <TextView
+            android1:id="@+id/trackDescriptionValueTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/trackGenreTextId"
+	        android1:layout_toRightOf="@+id/trackDescriptionTextId"
+	        android1:text="@string/trackDescriptionText"
+	        android:layout_marginBottom="50dp"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#00FFFF" />
+	    <TextView
+	        android1:id="@+id/trackDownloadCountTextId"
+	        android1:layout_width="wrap_content"
+	        android1:layout_height="wrap_content"
+	        android:layout_marginBottom="50dp"
+	        android:layout_marginRight="10dp"
+	        android1:layout_below="@+id/trackDescriptionTextId"
+	        android1:text="@string/trackDownloadCountText"
+	        android1:textAppearance="?android:attr/textAppearanceLarge"
+	        android1:textColor="#FFFFFF" />
+	     <TextView
+            android1:id="@+id/trackDownloadCountValueTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/trackDescriptionTextId"
+	        android1:layout_toRightOf="@+id/trackDownloadCountTextId"
+	        android1:text="@string/trackDownloadCountText"
+	        android:layout_marginBottom="50dp"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#00FFFF" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android1:id="@+id/trackPlayerLayoutId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/trackInfoLayoutId"
+        android1:layout_alignRight="@+id/trackInfoLayoutId"
+        android1:layout_below="@+id/trackInfoLayoutId"
+        android1:layout_marginLeft="130dp"
+        android1:layout_marginTop="158dp" >
+
+        <MediaController
+            android1:id="@+id/mediaController1"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_marginLeft="71dp" >
+        </MediaController>
+	     
+    </RelativeLayout>
+
+</RelativeLayout>

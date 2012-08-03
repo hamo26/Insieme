@@ -8,13 +8,13 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 
-@ContentView(R.layout.activity_main)
-public class MainActivity extends RoboActivity {
+@ContentView(R.layout.user_activity)
+public class UserActivity extends RoboActivity {
 	
 	@InjectView(R.id.trackListLayoutId)
 	private LinearLayout trackListLayout;
 	
-	@InjectView(R.id.trackListScrollView)
+	@InjectView(R.id.trackListScrollViewId)
 	private ScrollView trackListScrollView;
 	
 	@Override

@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
-import com.insieme.android.user.service.impl.LoginTask;
-import com.insieme.android.user.service.impl.RegisterTask;
+import com.insieme.android.user.task.impl.LoginTask;
+import com.insieme.android.user.task.impl.RegisterTask;
 import com.insieme.common.domain.dto.InsiemeExceptionEntity;
 import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;

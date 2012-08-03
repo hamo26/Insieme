@@ -4,8 +4,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
-import com.insieme.android.user.service.impl.LoginTask;
-import com.insieme.android.user.service.impl.RegisterTask;
+import com.insieme.android.user.task.impl.LoginTask;
+import com.insieme.android.user.task.impl.RegisterTask;
 
 public class ServicesModule extends AbstractModule {
 

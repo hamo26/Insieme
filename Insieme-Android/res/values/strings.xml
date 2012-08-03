@@ -14,6 +14,12 @@
     <string name="RegisterImageContentDescription">register image</string>
     <string name="TrackListImageContentDescription">track list image</string>
     <string name="title_activity_main">Insieme</string>
+    <string name="trackNameText">TRACK NAME</string>
+    <string name="trackGenreText">TRACK GENRE</string>
+    <string name="trackDescriptionText">TRACK DESCRIPTION</string>
+    <string name="trackDownloadCountText">DOWNLOAD COUNT</string>
+    <string name="trackInfoImageContentDescription">track info image</string>
+    <string name="trackSettingsImageContentDescription">track settings image</string>
     
 	
 </resources>

@@ -1,4 +1,4 @@
-package com.insieme.android.user.service.impl;
+package com.insieme.android.user.task.impl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
