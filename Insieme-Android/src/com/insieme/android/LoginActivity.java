@@ -1,9 +1,14 @@
 package com.insieme.android;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -20,6 +25,8 @@ import com.insieme.common.domain.rest.RestResult;
 
 @ContentView(R.layout.activity_login)
 public class LoginActivity extends RoboActivity{
+	private static final String INSIEME_TEST_FILE = "InsiemeTest";
+
 	@InjectView(R.id.userNameInputId) 
 	private EditText userIdInput;
 	
@@ -76,6 +83,11 @@ public class LoginActivity extends RoboActivity{
     	}
     }
     
+    /**
+     * Register user and create common insieme music folder.
+     *
+     * @param v the view
+     */
     public void registerUser(View v) {
     	String userId = registerUserIdInput.getText().toString();
     	String userPassword = regiterPasswordInput.getText().toString();
@@ -94,18 +106,39 @@ public class LoginActivity extends RoboActivity{
     		} else {
     			UserEntity userEntity = registerResult.getRestResult();
     			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
+    			createInsiemeMusicFolder();
     		}
 	    	
     	} catch(Exception e) {
     		e.printStackTrace();
     	}
     }
-    
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_login, menu);
-        return true;
+    	getMenuInflater().inflate(R.menu.activity_login, menu);
+    	return true;
     }
-
     
+    /**
+     * Creates the insieme music folder used to store local music.
+     *
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    private void createInsiemeMusicFolder() throws IOException {
+    	String helloInsieme = "Welcome to Insieme!!!";
+    	File helloInsiemeTestFile = new File(getFilesDir() + "/" + INSIEME_TEST_FILE);
+    	if (helloInsiemeTestFile.exists()) {
+    		return;
+    	} else {
+	    	try {
+	    		FileOutputStream fileOutputStream = openFileOutput(INSIEME_TEST_FILE, Context.MODE_PRIVATE);
+	    		fileOutputStream.write(helloInsieme.getBytes());
+				fileOutputStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    }
 }
