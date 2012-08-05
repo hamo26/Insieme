@@ -9,6 +9,7 @@ import com.insieme.common.guice.InsiemeCommonModule;
 import com.insieme.core.guice.SelfInjectingServerResourceModule;
 import com.insieme.core.guice.ServiceModule;
 import com.insieme.core.guice.TransactionModule;
+import com.insieme.core.tracks.rest.handlers.impl.ArtistTracksResourceImpl;
 import com.insieme.core.tracks.rest.handlers.impl.RegisterTrackResourceImpl;
 import com.insieme.core.tracks.rest.handlers.impl.TracksResourceImpl;
 import com.insieme.core.user.rest.handlers.impl.ArtistResourceImpl;
@@ -51,6 +52,7 @@ public class BaseRestHandlerImpl extends Application {
         router.attach("/artist/register", ArtistResourceImpl.class);
         router.attach("/artist/{artistId}", ArtistResourceImpl.class);
         router.attach("/search/artist", ArtistSearchResourceImpl.class);
+        router.attach("/tracks/artist/{artistId}", ArtistTracksResourceImpl.class);
         return router;  
     }  
 }

@@ -4,6 +4,7 @@ import org.springframework.web.client.RestTemplate;
 
 import android.os.AsyncTask;
 
+import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.insieme.android.util.ResourceUriBuilder;
 import com.insieme.common.domain.dto.ArtistEntity;
@@ -19,6 +20,7 @@ public class RegisterArtistTask
 	private final String artistRegistrationResourceUri;
 	private final RestResultHandler restResultHandler;
 	
+	@Inject
 	public RegisterArtistTask(@Named("restTemplate") 
 							final RestTemplate restTemplate,
 							@Named("resourceUriBuilder") 

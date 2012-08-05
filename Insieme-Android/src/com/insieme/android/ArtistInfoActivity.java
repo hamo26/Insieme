@@ -7,6 +7,7 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -76,17 +77,25 @@ public class ArtistInfoActivity extends RoboActivity {
 	
 	@Inject
 	private Provider<RegisterArtistTask> registerArtistTaskProvider;
+
+	private volatile ArtistEntity focusedArtist;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//this.userId = getIntent().getStringExtra(InsiemeAndroidConstants.USER_ID);
 		//If a user is registered we want to make the registration layout invincible.
-		this. userId = (String) savedInstanceState.get(InsiemeAndroidConstants.USER_ID);
-		if (savedInstanceState == null || isArtist(this.userId)) {
+		if (isArtist(this.userId)) {
 			registerArtistLayout.setVisibility(View.INVISIBLE);
 		}
     }
 	
+	public void goToArtistPageAction(View v) {
+		 Intent intent = new Intent(v.getContext(), ArtistActivity.class);
+		 intent.putExtra(InsiemeAndroidConstants.ARTIST_ID, this.focusedArtist);
+         startActivityForResult(intent, 0);
+
+	}
 	/**
 	 * Search artist action when search button is pressed.
 	 *
@@ -165,6 +174,7 @@ public class ArtistInfoActivity extends RoboActivity {
 	private void setArtistInfo(ArtistEntity artist) {
 		artistInfoGenreValue.setText(artist.getGenre());
 		artistInfoNameValue.setText(artist.getName());
+		this.focusedArtist = artist;
 	}
 	
 	/**

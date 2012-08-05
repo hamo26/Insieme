@@ -134,6 +134,7 @@ public final class R {
         public static final int searchButtonText=0x7f06001c;
         public static final int title_activity_login=0x7f060002;
         public static final int title_activity_main=0x7f06000d;
+        public static final int title_artist=0x7f060015;
         public static final int title_artist_info=0x7f06001d;
         public static final int trackDescriptionText=0x7f060010;
         public static final int trackDownloadCountText=0x7f060011;
@@ -141,7 +142,7 @@ public final class R {
         public static final int trackInfoImageContentDescription=0x7f060012;
         public static final int trackNameText=0x7f06000e;
         public static final int trackSettingsImageContentDescription=0x7f060013;
-        public static final int updateButtonText=0x7f060015;
+        public static final int updateButtonText=0x7f06001f;
         public static final int userNameText=0x7f060003;
     }
     public static final class style {

@@ -53,7 +53,7 @@ public class FindArtistsTask extends AsyncTask<String, Integer, RestResult<Artis
 		String url = resourceUriBuilder.setResourceUri(this.searchArtistResourceUri).build();
 		String artistName = params[0];
 		
-		ArtistEntity searchArtistEntity = new ArtistEntity(null, null, artistName);
+		ArtistEntity searchArtistEntity = new ArtistEntity(null, artistName, null);
 		
 		String jsonResult = this.restTemplate.postForObject(url, searchArtistEntity, String.class);
 		return restResultHandler.createRestResult(jsonResult, ArtistListEntity.class);

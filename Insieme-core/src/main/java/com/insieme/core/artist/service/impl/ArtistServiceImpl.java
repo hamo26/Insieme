@@ -10,6 +10,7 @@ import com.insieme.common.database.Tables;
 import com.insieme.common.domain.dto.ArtistEntity;
 import com.insieme.common.domain.dto.InsiemeException;
 import com.insieme.common.domain.dto.InsiemeExceptionFactory;
+import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.core.artist.service.ArtistService;
 
 /**
@@ -39,8 +40,8 @@ public class ArtistServiceImpl implements ArtistService {
 		if (!artistsResult.isEmpty()) {
 			throw insiemeExceptionFactory.createInsiemeException("Artist id: " + artistEntity.getArtistId() + " not unique");
 		} else {
-			createQuery.insertInto(Tables.ARTISTS, Tables.ARTISTS.ARTIST_ID, Tables.ARTISTS.GENRE)
-												   .values(artistEntity.getArtistId(), artistEntity.getGenre()).execute();
+			createQuery.insertInto(Tables.ARTISTS, Tables.ARTISTS.ARTIST_ID, Tables.ARTISTS.ARTIST_NAME, Tables.ARTISTS.GENRE)
+												   .values(artistEntity.getArtistId(), artistEntity.getName(), artistEntity.getGenre()).execute();
 		}
 		
 	}
@@ -68,4 +69,17 @@ public class ArtistServiceImpl implements ArtistService {
 				.fetchInto(ArtistEntity.class);
 		return artistsResult;
 	}
+
+	@Override
+	public Collection<TrackEntity> getTracksForArtist(Connection connection,
+			String artistId) throws InsiemeException {
+		InsiemeFactory retrieveQuery = new InsiemeFactory(connection);
+		List<TrackEntity> tracksResult = retrieveQuery.select()
+				.from(Tables.TRACKS)
+				.where(Tables.TRACKS.ARTIST_ID.equal(artistId))
+				.fetchInto(TrackEntity.class);
+		return tracksResult;
+	}
+	
+	
 }

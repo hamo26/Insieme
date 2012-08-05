@@ -1,13 +1,20 @@
 package com.insieme.common.domain.dto;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Simple user pojo that is structured to be serialized by JOOQ and automatically mapped.
  * Did not like the DTO generate by JOOQ so I chose to make my own.
  */
-public class UserEntity extends RestEntity {
+public class UserEntity extends RestEntity implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5832677761522878554L;
+
 	public static final String EMAIL_ADDRESS = "email-address";
 
 	public static final String PASSWORD = "password";

@@ -1,8 +1,15 @@
 package com.insieme.common.domain.dto;
 
+import java.io.Serializable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class ArtistEntity extends RestEntity {
+public class ArtistEntity extends RestEntity implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8458935910072046853L;
 
 	public static final String ARTIST_ID = "artist-id";
 	

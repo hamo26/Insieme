@@ -21,7 +21,7 @@
     <string name="trackInfoImageContentDescription">track info image</string>
     <string name="trackSettingsImageContentDescription">track settings image</string>
     <string name="downloadButtonText">DOWNLOAD</string>
-    <string name="updateButtonText">UPDATE</string>
+    <string name="title_artist">Artist</string>
     <string name="deleteButtonText">DELETE</string>
     <string name="artistsImageContentDescription">artists image</string>
     <string name="artistInfoImageContentDescription">artist info image</string>
@@ -31,6 +31,7 @@
     <string name="searchButtonText">SEARCH</string>
     <string name="title_artist_info">Artists</string>
     <string name="artistPageButtonText">ARTIST PAGE</string>
+    <string name="updateButtonText">UPDATE</string>
     
 	
 </resources>

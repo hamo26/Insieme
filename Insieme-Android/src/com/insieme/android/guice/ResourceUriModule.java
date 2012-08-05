@@ -19,6 +19,7 @@ public class ResourceUriModule extends AbstractModule {
 		bind(String.class).annotatedWith(Names.named("searchArtistResource")).toInstance("search/artist");
 		bind(String.class).annotatedWith(Names.named("artistResource")).toInstance("artist");
 		bind(String.class).annotatedWith(Names.named("artistRegistrationResource")).toInstance("artist/register");
+		bind(String.class).annotatedWith(Names.named("artistTracksResource")).toInstance("tracks/artist");
 		//Util Bindings
 		
 		bind(ResourceUriBuilder.class).annotatedWith(Names.named("resourceUriBuilder")).to(ResourceUriBuilder.class);

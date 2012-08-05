@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.util.Collection;
 
 import com.google.inject.ImplementedBy;
+import com.insieme.common.database.transactions.Transaction;
 import com.insieme.common.domain.dto.ArtistEntity;
 import com.insieme.common.domain.dto.InsiemeException;
+import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.core.user.rest.handlers.impl.ArtistResourceImpl;
 
 /**
@@ -28,6 +30,7 @@ public interface ArtistService {
 	 * @param connection the connection
 	 * @param artistEntity the artist entity
 	 */
+	@Transaction
 	public void registerArtist(Connection connection, ArtistEntity artistEntity) throws InsiemeException;
 	
 	/**
@@ -40,4 +43,13 @@ public interface ArtistService {
 	 */
 	public Collection<ArtistEntity> searchForArtists(Connection connection, ArtistEntity artistEntity) throws InsiemeException;
 
+	/**
+	 * Gets the tracks associated with an artist.
+	 *
+	 * @param connection the connection
+	 * @param artistId the artist id
+	 * @return the tracks for artist
+	 * @throws InsiemeException the insieme exception
+	 */
+	public Collection<TrackEntity> getTracksForArtist(Connection connection, String artistId) throws InsiemeException;
 }
