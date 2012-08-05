@@ -39,7 +39,7 @@
         android1:layout_height="wrap_content"
         android1:layout_alignParentRight="true"
         android1:layout_alignTop="@+id/trackListImageId"
-        android1:layout_marginBottom="50dp"
+        android1:layout_marginBottom="10dp"
         android1:layout_marginRight="209dp" >
 
         <ImageView

@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Collection;
 
-import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.restlet.resource.ResourceException;
 
@@ -19,11 +18,12 @@ import com.insieme.core.guice.SelfInjectingServerResource;
 import com.insieme.core.service.util.TrackValidator;
 import com.insieme.core.track.service.TrackService;
 import com.insieme.core.tracks.rest.handlers.RegisterTrackResource;
+import com.insieme.core.tracks.rest.handlers.UpdateTrackResource;
 
 /**
  * Implements {@link RegisterTrackResource}.
  */
-public class RegisterTrackResourceImpl extends SelfInjectingServerResource implements RegisterTrackResource {
+public class UpdateTrackResourceImpl extends SelfInjectingServerResource implements UpdateTrackResource {
 	
 	private Connection connection;
 	
@@ -42,10 +42,11 @@ public class RegisterTrackResourceImpl extends SelfInjectingServerResource imple
 	protected void doInit() throws ResourceException {
 		super.doInit();
 	}
-	
+
 	@Override
-	@Post
-	public String registerTrack(String trackRepresentation) throws InsiemeException {
+	@Put
+	public String updateTrack(String trackRepresentation)
+			throws InsiemeException {
 		try {
 			TrackEntity trackEntity = jsonUtil.deserializeRepresentation(trackRepresentation, TrackEntity.class);
 			Collection<String> missingTrackFields = TrackValidator.getMissingTrackFields(trackEntity);
@@ -58,7 +59,7 @@ public class RegisterTrackResourceImpl extends SelfInjectingServerResource imple
 						InsiemePersistenceConstants.INSIEME_ROOT,
 						InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
 				
-				trackService.registerTrack(connection, trackEntity);
+				trackService.updateTrack(connection, trackEntity);
 				return jsonUtil.serializeRepresentation(trackEntity);
 			}
 		} catch (InsiemeException e) {
@@ -67,5 +68,6 @@ public class RegisterTrackResourceImpl extends SelfInjectingServerResource imple
 			return insiemeExceptionFactory.createInsiemeException(e.getLocalizedMessage()).serializeJsonException();
 		}
 	}
+	
 
 }
