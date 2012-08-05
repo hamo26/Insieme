@@ -23,6 +23,7 @@ public class ArtistValidator {
 			{
 				put(ArtistEntity.ARTIST_ID, artistEntity.getArtistId());
 				put(ArtistEntity.GENRE, artistEntity.getGenre());
+				put(ArtistEntity.ARTIST_NAME, artistEntity.getName());
 			}
 		};
 

@@ -16,6 +16,9 @@ public class ResourceUriModule extends AbstractModule {
 		//Resource bindings.
 		bind(String.class).annotatedWith(Names.named("authenticationResource")).toInstance("user/login");
 		bind(String.class).annotatedWith(Names.named("registrationResource")).toInstance("user/register");
+		bind(String.class).annotatedWith(Names.named("searchArtistResource")).toInstance("search/artist");
+		bind(String.class).annotatedWith(Names.named("artistResource")).toInstance("artist");
+		bind(String.class).annotatedWith(Names.named("artistRegistrationResource")).toInstance("artist/register");
 		//Util Bindings
 		
 		bind(ResourceUriBuilder.class).annotatedWith(Names.named("resourceUriBuilder")).to(ResourceUriBuilder.class);

@@ -17,7 +17,6 @@
         android1:contentDescription="@string/artistsImageContentDescription"
         android1:src="@drawable/artists" />
 
-
     <ScrollView
         android1:id="@+id/artistListScrollViewId"
         android1:layout_width="wrap_content"
@@ -25,12 +24,12 @@
         android1:layout_alignParentLeft="true"
         android1:layout_below="@+id/artistListImageId"
         android1:layout_marginTop="63dp" >
-
-        <LinearLayout
+        <LinearLayout
             android1:id="@+id/artistListLayoutId"
-            android1:layout_width="362dp"
+            android1:layout_width="267dp"
             android1:layout_height="600dp"
             android1:orientation="vertical" >
+
         </LinearLayout>
     </ScrollView>
 
@@ -49,7 +48,7 @@
 	        android1:layout_alignBottom="@+id/artistListImageId"
 	        android:layout_marginBottom="50dp"
 	        android1:contentDescription="@string/artistInfoImageContentDescription"
-	        android1:src="@drawable/trackinfo" />
+	        android1:src="@drawable/artistinfo" />
 
         <TextView
             android1:id="@+id/artistNameTextId"
@@ -91,6 +90,14 @@
 	        android:layout_marginBottom="50dp"
             android1:textAppearance="?android:attr/textAppearanceLarge"
             android1:textColor="#00FFFF" />
+         <Button
+   	        android1:id="@+id/artistPageButtonId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_alignLeft="@+id/artistGenreTextId"
+   	        android1:layout_below="@+id/artistGenreTextId"
+   	        android1:onClick="goToArtistPageAction"
+   	        android1:text="@string/artistPageButtonText" />
     </RelativeLayout>
    	<RelativeLayout
         android1:id="@+id/registerArtistLayoutId"
@@ -109,36 +116,108 @@
 	        android1:contentDescription="@string/RegisterImageContentDescription"
 	        android1:src="@drawable/register" />
         <TextView
+            android1:id="@+id/registerArtistNameTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="60dp"
+            android1:text="@string/artistNameText"
+            android1:layout_below="@+id/registerArtistImageId"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+         <EditText
+            android1:id="@+id/registerArtistNameInputId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignParentRight="true"
+            android1:layout_alignTop="@+id/registerArtistNameTextId"
+            android1:layout_marginLeft="20dp"
+            android1:layout_toRightOf="@+id/registerArtistNameTextId"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#00FFFF" />
+        <TextView
             android1:id="@+id/registerArtistGenreTextId"
             android1:layout_width="wrap_content"
             android1:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="60dp"
             android1:text="@string/artistGenreText"
-            android1:layout_below="@+id/registerArtistImageId"
+            android1:layout_below="@+id/registerArtistNameTextId"
             android1:textAppearance="?android:attr/textAppearanceLarge"
             android1:textColor="#FFFFFF" />
-
         <EditText
-            android1:id="@+id/artistGenreInputId"
+            android1:id="@+id/registerArtistGenreInputId"
             android1:layout_width="wrap_content"
             android1:layout_height="wrap_content"
-            android1:layout_alignBottom="@+id/registerArtistGenreTextId"
             android1:layout_alignParentRight="true"
             android1:layout_alignTop="@+id/registerArtistGenreTextId"
             android1:layout_marginLeft="20dp"
             android1:layout_toRightOf="@+id/registerArtistGenreTextId"
+            android:ems="10"
             android:inputType="textPersonName"
             android1:textAppearance="?android:attr/textAppearanceLarge"
             android1:textColor="#00FFFF" />
-
         <Button
             android1:id="@+id/artistRegisterButtonId"
             android1:layout_width="wrap_content"
             android1:layout_height="wrap_content"
             android1:layout_alignLeft="@+id/registerArtistGenreTextId"
             android1:layout_below="@+id/registerArtistGenreTextId"
-            android1:onClick="registerArtist"
+            android1:onClick="registerArtistAction"
             android1:text="@string/registerButtonText" />
     </RelativeLayout>
+
+   	<RelativeLayout
+   	    android1:id="@+id/artistSearchLayoutId"
+   	    android1:layout_width="wrap_content"
+   	    android1:layout_height="wrap_content"
+   	    android1:layout_alignTop="@+id/artistInfoLayoutId"
+   	    android1:layout_marginRight="127dp"
+   	    android1:layout_toLeftOf="@+id/artistInfoLayoutId" >
+
+   	    <ImageView
+   	        android1:id="@+id/artistSearchImageId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_alignBottom="@+id/artistListImageId"
+   	        android1:layout_marginBottom="50dp"
+   	        android1:contentDescription="@string/artistSearchImageContentDescription"
+   	        android1:src="@drawable/search" />
+
+   	    <TextView
+   	        android1:id="@+id/searchArtistNameTextId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_below="@+id/artistSearchImageId"
+   	        android1:layout_marginBottom="50dp"
+   	        android1:layout_marginRight="10dp"
+   	        android1:text="@string/artistNameText"
+   	        android1:textAppearance="?android:attr/textAppearanceLarge"
+   	        android1:textColor="#FFFFFF" />
+
+   	    <EditText
+   	        android1:id="@+id/searchArtistNameInputId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_alignTop="@+id/searchArtistNameTextId"
+   	        android1:layout_marginLeft="10dp"
+   	        android1:layout_toRightOf="@+id/searchArtistNameTextId"
+   	        android:ems="10"
+   	        android1:inputType="textPersonName"
+   	        android1:textAppearance="?android:attr/textAppearanceLarge"
+   	        android1:textColor="#00FFFF" >
+
+   	    </EditText>
+   	    <Button
+   	        android1:id="@+id/artistSearchButtonId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_alignLeft="@+id/searchArtistNameTextId"
+   	        android1:layout_below="@+id/searchArtistNameTextId"
+   	        android1:onClick="searchArtistAction"
+   	        android1:text="@string/searchButtonText" />
+   	</RelativeLayout>
+
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.insieme.core.artist.service.impl;
 
 import java.sql.Connection;
+import java.util.Collection;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -55,5 +56,16 @@ public class ArtistServiceImpl implements ArtistService {
 			throw insiemeExceptionFactory.createInsiemeException("Artist with id:" + artistId + " not found.");
 		}
 		return artistsResult.get(0);
+	}
+
+	@Override
+	public Collection<ArtistEntity> searchForArtists(Connection connection,
+			ArtistEntity artistEntity) throws InsiemeException {
+		InsiemeFactory retrieveQuery = new InsiemeFactory(connection);
+		List<ArtistEntity> artistsResult = retrieveQuery.select()
+				.from(Tables.ARTISTS)
+				.where(Tables.ARTISTS.ARTIST_NAME.like(artistEntity.getName()))
+				.fetchInto(ArtistEntity.class);
+		return artistsResult;
 	}
 }

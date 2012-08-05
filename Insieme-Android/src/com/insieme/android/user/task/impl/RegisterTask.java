@@ -27,13 +27,13 @@ public class RegisterTask extends AsyncTask<String, Integer, RestResult<UserEnti
 	@SuppressWarnings("unchecked")
 	@Inject
 	public RegisterTask(@Named("restTemplate") 
-							final RestTemplate restTemplate,
-							@Named("resourceUriBuilder") 
-							final ResourceUriBuilder resourceUriBuilder,
-							@Named("registrationResource")
-							final String registrationResourceUri,
-							@Named("restResultHandler")
-							final RestResultHandler restResultHandler) {
+						final RestTemplate restTemplate,
+						@Named("resourceUriBuilder") 
+						final ResourceUriBuilder resourceUriBuilder,
+						@Named("registrationResource")
+						final String registrationResourceUri,
+						@Named("restResultHandler")
+						final RestResultHandler restResultHandler) {
 		super();
 		this.restTemplate = restTemplate;
 		ArrayList<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();

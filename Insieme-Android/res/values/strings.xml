@@ -27,6 +27,10 @@
     <string name="artistInfoImageContentDescription">artist info image</string>
     <string name="artistGenreText">GENRE</string>
     <string name="artistNameText">NAME</string>
+    <string name="artistSearchImageContentDescription">search image</string>
+    <string name="searchButtonText">SEARCH</string>
+    <string name="title_artist_info">Artists</string>
+    <string name="artistPageButtonText">ARTIST PAGE</string>
     
 	
 </resources>

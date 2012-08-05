@@ -25,12 +25,12 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
         public static final int login=0x7f020004;
         public static final int register=0x7f020005;
-        public static final int trackinfo=0x7f020006;
-        public static final int tracklist=0x7f020007;
-        public static final int tracksettings=0x7f020008;
+        public static final int search=0x7f020006;
+        public static final int trackinfo=0x7f020007;
+        public static final int tracklist=0x7f020008;
+        public static final int tracksettings=0x7f020009;
     }
     public static final class id {
-        public static final int artistGenreInputId=0x7f09003b;
         public static final int artistGenreTextId=0x7f090036;
         public static final int artistGenreValueTextId=0x7f090037;
         public static final int artistInfoImageId=0x7f090033;
@@ -40,18 +40,25 @@ public final class R {
         public static final int artistListScrollViewId=0x7f090030;
         public static final int artistNameTextId=0x7f090034;
         public static final int artistNameValueTextId=0x7f090035;
-        public static final int artistRegisterButtonId=0x7f09003c;
+        public static final int artistPageButtonId=0x7f090038;
+        public static final int artistRegisterButtonId=0x7f09003f;
+        public static final int artistSearchButtonId=0x7f090044;
+        public static final int artistSearchImageId=0x7f090041;
+        public static final int artistSearchLayoutId=0x7f090040;
         public static final int deleteButtonId=0x7f09002c;
         public static final int downloadButtonId=0x7f090020;
         public static final int loginButton=0x7f090004;
         public static final int loginImageId=0x7f090005;
         public static final int mediaController1=0x7f09002e;
-        public static final int menu_settings=0x7f09003d;
+        public static final int menu_settings=0x7f090045;
         public static final int passwordInputId=0x7f090003;
         public static final int passwordTextId=0x7f090000;
-        public static final int registerArtistGenreTextId=0x7f09003a;
-        public static final int registerArtistImageId=0x7f090039;
-        public static final int registerArtistLayoutId=0x7f090038;
+        public static final int registerArtistGenreInputId=0x7f09003e;
+        public static final int registerArtistGenreTextId=0x7f09003d;
+        public static final int registerArtistImageId=0x7f09003a;
+        public static final int registerArtistLayoutId=0x7f090039;
+        public static final int registerArtistNameInputId=0x7f09003c;
+        public static final int registerArtistNameTextId=0x7f09003b;
         public static final int registerButtonId=0x7f090011;
         public static final int registerEmailAddressTextId=0x7f090009;
         public static final int registerEmailInputId=0x7f09000e;
@@ -64,6 +71,8 @@ public final class R {
         public static final int registerPasswordTextId=0x7f09000a;
         public static final int registerUserInputId=0x7f090010;
         public static final int registerUserNameTextId=0x7f090007;
+        public static final int searchArtistNameInputId=0x7f090043;
+        public static final int searchArtistNameTextId=0x7f090042;
         public static final int trackDescriptionTextId=0x7f09001c;
         public static final int trackDescriptionValueTextId=0x7f09001d;
         public static final int trackDownloadCountTextId=0x7f09001e;
@@ -111,6 +120,8 @@ public final class R {
         public static final int artistGenreText=0x7f060019;
         public static final int artistInfoImageContentDescription=0x7f060018;
         public static final int artistNameText=0x7f06001a;
+        public static final int artistPageButtonText=0x7f06001e;
+        public static final int artistSearchImageContentDescription=0x7f06001b;
         public static final int artistsImageContentDescription=0x7f060017;
         public static final int deleteButtonText=0x7f060016;
         public static final int downloadButtonText=0x7f060014;
@@ -120,8 +131,10 @@ public final class R {
         public static final int menu_settings=0x7f060001;
         public static final int passwordText=0x7f060004;
         public static final int registerButtonText=0x7f06000a;
+        public static final int searchButtonText=0x7f06001c;
         public static final int title_activity_login=0x7f060002;
         public static final int title_activity_main=0x7f06000d;
+        public static final int title_artist_info=0x7f06001d;
         public static final int trackDescriptionText=0x7f060010;
         public static final int trackDownloadCountText=0x7f060011;
         public static final int trackGenreText=0x7f06000f;

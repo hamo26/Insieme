@@ -28,6 +28,7 @@ public class Artists extends UpdatableTableImpl<ArtistsRecord> {
 	 */
 	public static final Artists ARTISTS = new Artists();
 
+
 	/**
 	 * The class holding records for this type
 	 */
@@ -48,6 +49,19 @@ public class Artists extends UpdatableTableImpl<ArtistsRecord> {
 	 * </pre></code>
 	 */
 	public final TableField<ArtistsRecord, String> ARTIST_ID = createField("ARTIST_ID", SQLDataType.VARCHAR, this);
+	
+	/**
+	 * Foreign key for user id. An artist is a user.
+	 * <p>
+	 * This column is part of the table's PRIMARY KEY
+	 * <p>
+	 * This column is part of a FOREIGN KEY: <code><pre>
+	 * CONSTRAINT USER_ID_KEY
+	 * FOREIGN KEY (ARTIST_ID)
+	 * REFERENCES insieme.users (USER_ID)
+	 * </pre></code>
+	 */
+	public final TableField<ArtistsRecord, String> ARTIST_NAME = createField("ARTIST_NAME", SQLDataType.VARCHAR, this);
 
 	/**
 	 * The table column <code>insieme.artists.GENRE</code>
