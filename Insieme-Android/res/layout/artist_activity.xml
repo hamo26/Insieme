@@ -275,7 +275,7 @@
             android1:layout_below="@+id/trackDownloadCountValueInputId"
             android1:onClick="deleteTrack"
             android1:text="@string/deleteButtonText" />
-
+        
     </RelativeLayout>
 
     <RelativeLayout

@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.util.Collection;
 
 import org.restlet.resource.Post;
-import org.restlet.resource.Put;
 import org.restlet.resource.ResourceException;
 
 import com.google.inject.Inject;

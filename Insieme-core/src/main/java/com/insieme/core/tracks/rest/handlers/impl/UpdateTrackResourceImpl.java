@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Collection;
 
+import org.apache.commons.lang.StringUtils;
+import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.restlet.resource.ResourceException;
 
@@ -60,6 +62,32 @@ public class UpdateTrackResourceImpl extends SelfInjectingServerResource impleme
 						InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
 				
 				trackService.updateTrack(connection, trackEntity);
+				return jsonUtil.serializeRepresentation(trackEntity);
+			}
+		} catch (InsiemeException e) {
+			return e.serializeJsonException();
+		} catch (Exception e) {
+			return insiemeExceptionFactory.createInsiemeException(e.getLocalizedMessage()).serializeJsonException();
+		}
+	}
+
+	@Override
+	@Post
+	public String deleteTrack(String trackRepresentation)
+			throws InsiemeException {
+		// TODO Auto-generated method stub
+		try {
+			TrackEntity trackEntity = jsonUtil.deserializeRepresentation(trackRepresentation, TrackEntity.class);
+			if (StringUtils.isEmpty(trackEntity.getTrackId())) {
+				throw insiemeExceptionFactory.createInsiemeException("Missing Track Id");
+			} else {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				connection = DriverManager.getConnection(
+						InsiemePersistenceConstants.INSIEME_URL,
+						InsiemePersistenceConstants.INSIEME_ROOT,
+						InsiemePersistenceConstants.INSIEME_ROOT_PASSWORD);
+				
+				trackService.deleteTrack(connection, trackEntity.getTrackId());
 				return jsonUtil.serializeRepresentation(trackEntity);
 			}
 		} catch (InsiemeException e) {

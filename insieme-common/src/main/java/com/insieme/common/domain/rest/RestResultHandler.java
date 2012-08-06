@@ -39,9 +39,9 @@ public class RestResultHandler {
 					.setError(insiemeExceptionDto)
 					.build();
 		} else {
-			E restResultDto = jsonUtil.deserializeRepresentation(jsonResult, expectedType);
+			E restResultDTO = jsonUtil.deserializeRepresentation(jsonResult, expectedType);
 			restResult = restResultBuilder
-					.setRestResult(restResultDto)
+					.setRestResult(restResultDTO)
 					.build();
 		}
 		return restResult;
@@ -60,6 +60,22 @@ public class RestResultHandler {
 		RestResultBuilder<E> restResultBuilder = new RestResult.RestResultBuilder<E>();
 		return restResultBuilder
 				.setError(new InsiemeExceptionEntity(error))
+				.build();
+	}
+	
+	/**
+	 * Creates PUT result containing an empty dto since puts dont return any representations. 
+	 * 
+	 * TODO: Reconsider if this is the right place for this. 
+	 * 		 Currently, the android client is using this method to throw task exceptions.
+	 *
+	 * @param error the error
+	 * @return the rest result
+	 */
+	public <E extends RestEntity> RestResult<E> createPutResult(Class<E> expectedType) {
+		RestResultBuilder<E> restResultBuilder = new RestResult.RestResultBuilder<E>();
+		return restResultBuilder
+				.setRestResult(null)
 				.build();
 	}
 	

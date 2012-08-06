@@ -1,5 +1,6 @@
 package com.insieme.core.tracks.rest.handlers;
 
+import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 
 import com.insieme.common.domain.dto.InsiemeException;
@@ -19,4 +20,14 @@ public interface UpdateTrackResource {
 	 */
 	@Put
 	public String updateTrack(String trackRepresentation) throws InsiemeException;
+	
+	/**
+	 * Deletes a track.
+	 *
+	 * @param trackRepresentation the track representation
+	 * @return the string
+	 * @throws InsiemeException the insieme exception
+	 */
+	@Post
+	public String deleteTrack(String trackRepresentation) throws InsiemeException;
 }

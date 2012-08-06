@@ -55,6 +55,7 @@ public class BaseRestHandlerImpl extends Application {
         router.attach("/artist/{artistId}", ArtistResourceImpl.class);
         router.attach("/search/artist", ArtistSearchResourceImpl.class);
         router.attach("/tracks/artist/{artistId}", ArtistTracksResourceImpl.class);
+        router.attach("/delete/track", UpdateTrackResourceImpl.class);
         return router;  
     }  
 }

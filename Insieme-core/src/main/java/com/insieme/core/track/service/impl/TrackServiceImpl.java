@@ -72,9 +72,27 @@ public class TrackServiceImpl implements TrackService {
 			.set(Tables.TRACKS.DESCRIPTION, trackEntity.getDescription())
 			.set(Tables.TRACKS.DOWNLOAD_COUNT, trackEntity.getDownloadCount())
 			.set(Tables.TRACKS.GENRE, trackEntity.getGenre())
-			.set(Tables.TRACKS.TRACK_NAME, trackEntity.getTrackId())
+			.set(Tables.TRACKS.TRACK_NAME, trackEntity.getName())
 			.where(Tables.TRACKS.TRACK_ID.equal(trackEntity.getTrackId()))
 			.execute();
 		}
+	}
+
+	@Override
+	public void deleteTrack(Connection connection, String trackId)
+			throws InsiemeException {
+		InsiemeFactory createQuery = new InsiemeFactory(connection);
+		List<TrackEntity> result = createQuery.select()
+				.from(Tables.TRACKS)
+				.where(Tables.TRACKS.TRACK_ID.equal(trackId))
+				.fetchInto(TrackEntity.class);
+		if (result.isEmpty()) {
+			throw insiemeExceptionFactory.createInsiemeException("Track with id: " + trackId + " does not exist");
+		} else {
+			createQuery.delete(Tables.TRACKS)
+			.where(Tables.TRACKS.TRACK_ID.equal(trackId))
+			.execute();
+		}
+		
 	}
 }

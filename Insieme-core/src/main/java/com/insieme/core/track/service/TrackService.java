@@ -39,4 +39,13 @@ public interface TrackService {
 	 * @param trackEntity the track entity
 	 */
 	public void updateTrack(Connection connection, TrackEntity trackEntity) throws InsiemeException;
+	
+	/**
+	 * Delete track associated with an artist.
+	 *
+	 * @param connection the connection
+	 * @param trackId the track id
+	 * @throws InsiemeException the insieme exception
+	 */
+	public void deleteTrack(Connection connection, String trackId) throws InsiemeException;
 }
