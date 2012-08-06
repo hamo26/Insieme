@@ -46,7 +46,7 @@ public class BaseRestHandlerImpl extends Application {
         		new InsiemeCommonModule());
         
         // Defines only one route  
-        router.attach("user/login", AuthenticationResourceImpl.class);  
+        router.attach("/user/login", AuthenticationResourceImpl.class);  
         router.attach("/tracks/{trackId}", TracksResourceImpl.class);
         router.attach("/register/track", RegisterTrackResourceImpl.class);
         router.attach("/update/track", UpdateTrackResourceImpl.class);

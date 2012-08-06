@@ -83,7 +83,7 @@ public class ArtistInfoActivity extends RoboActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//this.userId = getIntent().getStringExtra(InsiemeAndroidConstants.USER_ID);
+		this.userId = getIntent().getStringExtra(InsiemeAndroidConstants.USER_ID);
 		//If a user is registered we want to make the registration layout invincible.
 		if (isArtist(this.userId)) {
 			registerArtistLayout.setVisibility(View.INVISIBLE);
@@ -179,6 +179,9 @@ public class ArtistInfoActivity extends RoboActivity {
 	
 	/**
 	 * Checks to see whether a user is an artist given an artist id. 
+	 * 
+	 * TODO: this method is duplicated across two activities. 
+	 * Find a way to refactor to a common place.
 	 *
 	 * @param userId the user id
 	 * @return the boolean

@@ -14,8 +14,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ArtistInfoActivity"
-            android:label="@string/title_artist_info" >
+            android:name=".LoginActivity"
+            android:label="@string/title_user" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,13 +23,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".UserActivity"
+            android:label="@string/title_user" >
+        </activity>
+        <activity
+            android:name=".ArtistInfoActivity"
+            android:label="@string/title_artist_info" >
+        </activity>
+        <activity
             android:name=".ArtistActivity"
             android:label="@string/title_artist" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 </manifest>

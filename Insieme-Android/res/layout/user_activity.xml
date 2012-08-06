@@ -132,24 +132,52 @@
             android1:textAppearance="?android:attr/textAppearanceLarge"
             android1:textColor="#00FFFF" />
     </RelativeLayout>
-
-    <RelativeLayout
-        android1:id="@+id/trackPlayerLayoutId"
+	<RelativeLayout
+        android1:id="@+id/searchArtistsLayoutId"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_alignLeft="@+id/trackInfoLayoutId"
         android1:layout_alignRight="@+id/trackInfoLayoutId"
         android1:layout_below="@+id/trackInfoLayoutId"
-        android1:layout_marginLeft="130dp"
-        android1:layout_marginTop="158dp" >
-
-        <MediaController
-            android1:id="@+id/mediaController1"
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android1:layout_marginLeft="71dp" >
-        </MediaController>
-	     
+        android1:layout_marginTop="28dp" >	
+		<ImageView
+		    android1:id="@+id/artistSearchImageId"
+		    android1:layout_width="wrap_content"
+		    android1:layout_height="wrap_content"
+		    android1:contentDescription="@string/artistSearchImageContentDescription"
+		    android1:src="@drawable/artistsearch" />
+		<Button
+   	        android1:id="@+id/searchArtistButtonId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_alignLeft="@+id/artistSearchImageId"
+   	        android1:layout_below="@+id/artistSearchImageId"
+   	        android1:layout_marginTop="20dp"
+   	        android1:onClick="goToArtistInfoAction"
+   	        android1:text="@string/searchArtistButtonText" />
     </RelativeLayout>
-
+    <RelativeLayout
+        android1:id="@+id/myArtistPageLayoutId"
+        android1:layout_width="wrap_content"
+        android1:layout_height="wrap_content"
+        android1:layout_alignLeft="@+id/searchArtistsLayoutId"
+        android1:layout_alignRight="@+id/searchArtistsLayoutId"
+        android1:layout_below="@+id/searchArtistsLayoutId"
+        android1:layout_marginTop="28dp" >	
+		<ImageView
+		    android1:id="@+id/myArtistPageImageId"
+		    android1:layout_width="wrap_content"
+		    android1:layout_height="wrap_content"
+		    android1:contentDescription="@string/myArtistPageImageContentDescription"
+		    android1:src="@drawable/myartistpage" />
+		<Button
+   	        android1:id="@+id/myArtistPageButtonId"
+   	        android1:layout_width="wrap_content"
+   	        android1:layout_height="wrap_content"
+   	        android1:layout_alignLeft="@+id/myArtistPageImageId"
+   	        android1:layout_below="@+id/myArtistPageImageId"
+   	        android1:layout_marginTop="20dp"
+   	        android1:onClick="goToArtistAction"
+   	        android1:text="@string/myArtistPageButtonText" />
+    </RelativeLayout>
 </RelativeLayout>

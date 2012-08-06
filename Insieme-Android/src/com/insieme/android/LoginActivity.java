@@ -9,6 +9,7 @@ import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.insieme.android.constants.InsiemeAndroidConstants;
 import com.insieme.android.user.task.impl.LoginTask;
 import com.insieme.android.user.task.impl.RegisterTask;
 import com.insieme.common.domain.dto.InsiemeExceptionEntity;
@@ -76,7 +78,7 @@ public class LoginActivity extends RoboActivity{
     			Toast.makeText(this, "welcome: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
     		} else {
     			UserEntity userEntity = loginResult.getRestResult();
-    			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
+    			goToUserPage(userEntity, v);
     		}
     	} catch(Exception e) {
     		e.printStackTrace();
@@ -105,8 +107,8 @@ public class LoginActivity extends RoboActivity{
     			Toast.makeText(this, "registration failed: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
     		} else {
     			UserEntity userEntity = registerResult.getRestResult();
-    			Toast.makeText(this, "welcome: " + userEntity.getFirstName(), Toast.LENGTH_LONG).show();
     			createInsiemeMusicFolder();
+    			goToUserPage(userEntity, v);
     		}
 	    	
     	} catch(Exception e) {
@@ -118,6 +120,18 @@ public class LoginActivity extends RoboActivity{
     public boolean onCreateOptionsMenu(Menu menu) {
     	getMenuInflater().inflate(R.menu.activity_login, menu);
     	return true;
+    }
+    
+    /**
+     * Go to user page.
+     *
+     * @param userEntity the user entity
+     * @param v the v
+     */
+    private void goToUserPage(UserEntity userEntity, View v) {
+    	Intent intent = new Intent(v.getContext(), UserActivity.class);
+		intent.putExtra(InsiemeAndroidConstants.USER_ID, userEntity);
+        startActivityForResult(intent, 0);
     }
     
     /**

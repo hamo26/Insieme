@@ -13,7 +13,6 @@
     <string name="registerButtonText">REGISTER</string>
     <string name="RegisterImageContentDescription">register image</string>
     <string name="TrackListImageContentDescription">track list image</string>
-    <string name="title_activity_main">Insieme</string>
     <string name="trackNameText">TRACK NAME</string>
     <string name="trackGenreText">TRACK GENRE</string>
     <string name="trackDescriptionText">TRACK DESCRIPTION</string>
@@ -21,17 +20,21 @@
     <string name="trackInfoImageContentDescription">track info image</string>
     <string name="trackSettingsImageContentDescription">track settings image</string>
     <string name="downloadButtonText">DOWNLOAD</string>
-    <string name="title_artist">Artist</string>
+    <string name="title_artist">Insieme Artist</string>
     <string name="deleteButtonText">DELETE</string>
     <string name="artistsImageContentDescription">artists image</string>
     <string name="artistInfoImageContentDescription">artist info image</string>
     <string name="artistGenreText">GENRE</string>
     <string name="artistNameText">NAME</string>
-    <string name="artistSearchImageContentDescription">search image</string>
     <string name="searchButtonText">SEARCH</string>
     <string name="title_artist_info">Artists</string>
     <string name="artistPageButtonText">ARTIST PAGE</string>
     <string name="updateButtonText">UPDATE</string>
+    <string name="artistSearchImageContentDescription">artist search image</string>
+    <string name="searchArtistButtonText">FIND ARTISTS</string>
+    <string name="myArtistPageImageContentDescription">my artist page image</string>
+    <string name="myArtistPageButtonText">GO TO ARTIST PAGE</string>
+    <string name="title_user">Insieme User</string>
     
 	
 </resources>
