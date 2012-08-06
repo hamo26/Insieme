@@ -1,5 +1,11 @@
 package com.insieme.android.artist.task.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
 import android.os.AsyncTask;
@@ -20,6 +26,7 @@ public class RegisterArtistTask
 	private final String artistRegistrationResourceUri;
 	private final RestResultHandler restResultHandler;
 	
+	@SuppressWarnings("unchecked")
 	@Inject
 	public RegisterArtistTask(@Named("restTemplate") 
 							final RestTemplate restTemplate,
@@ -30,6 +37,10 @@ public class RegisterArtistTask
 							@Named("restResultHandler")
 							final RestResultHandler restResultHandler) {
 		this.restTemplate = restTemplate;
+		ArrayList<HttpMessageConverter<?>> messageConverters = new ArrayList<HttpMessageConverter<?>>();
+		messageConverters.addAll(Arrays.asList(new GsonHttpMessageConverter(), new StringHttpMessageConverter()));
+
+		this.restTemplate.setMessageConverters(messageConverters);
 		this.resourceUriBuilder = resourceUriBuilder;
 		this.artistRegistrationResourceUri = artistRegistrationResourceUri;
 		this.restResultHandler = restResultHandler;
@@ -44,7 +55,7 @@ public class RegisterArtistTask
 		String artistName = params[1];
 		String artistGenre = params[2];
 		
-		ArtistEntity postArtist = new ArtistEntity(artistId, artistGenre, artistName);
+		ArtistEntity postArtist = new ArtistEntity(artistId, artistName, artistGenre);
 		
 		String jsonResult = this.restTemplate.postForObject(url, postArtist, String.class);
 		return restResultHandler.createRestResult(jsonResult, ArtistEntity.class);

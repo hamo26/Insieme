@@ -148,8 +148,7 @@
 	        android:layout_marginTop="5dp"
 	        android:onClick="downloadTrack"
 	        android:text="@string/downloadButtonText" />
-    </RelativeLayout>
-
+    </RelativeLayout>
     <RelativeLayout
         android1:id="@+id/trackSettingsLayoutId"
         android1:layout_width="wrap_content"
@@ -279,21 +278,141 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android1:id="@+id/trackPlayerLayoutId"
+        android1:id="@+id/uploadTrackLayoutId"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
-        android1:layout_alignLeft="@+id/trackInfoLayoutId"
-        android1:layout_alignRight="@+id/trackInfoLayoutId"
-        android1:layout_below="@+id/trackInfoLayoutId"
-        android1:layout_marginLeft="130dp"
-        android1:layout_marginTop="158dp" >
+        android1:layout_alignBottom="@+id/trackSettingsLayoutId"
+        android1:layout_toLeftOf="@+id/trackInfoLayoutId" >
 
-        <MediaController
-            android1:id="@+id/mediaController1"
+        <ImageView
+            android1:id="@+id/upLoadTrackImageId"
             android1:layout_width="wrap_content"
             android1:layout_height="wrap_content"
-            android1:layout_marginLeft="71dp" >
-        </MediaController>
+            android1:layout_alignTop="@+id/trackSettingsImageId"
+            android1:layout_marginBottom="30dp"
+            android1:contentDescription="@string/artistSearchImageContentDescription"
+            android1:src="@drawable/upload" />
+
+        <TextView
+            android1:id="@+id/uploadTrackIdTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/upLoadTrackImageId"
+            android1:layout_marginBottom="20dp"
+            android1:layout_marginRight="10dp"
+            android1:text="@string/trackIdText"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+
+        <EditText
+            android1:id="@+id/uploadTrackIdInputId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignTop="@+id/uploadTrackIdTextId"
+            android1:layout_toRightOf="@+id/uploadTrackIdTextId"
+            android1:ems="10"
+            android1:inputType="textPersonName"
+            android1:textAppearance="?android:attr/textAppearanceSmall"
+            android1:textColor="#00FFFF" >
+        </EditText>
+
+        <TextView
+            android1:id="@+id/uploadTrackNameTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignLeft="@+id/uploadTrackIdTextId"
+            android1:layout_below="@+id/uploadTrackIdTextId"
+            android1:layout_marginBottom="20dp"
+            android1:text="@string/artistNameText"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+
+        <EditText
+            android1:id="@+id/uploadTrackNameInputId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignLeft="@+id/uploadTrackIdInputId"
+            android1:layout_alignTop="@+id/uploadTrackNameTextId"
+            android1:layout_toRightOf="@+id/uploadTrackNameTextId"
+            android1:ems="10"
+            android1:inputType="textPersonName"
+            android1:textAppearance="?android:attr/textAppearanceSmall"
+            android1:textColor="#00FFFF" />
+
+        <TextView
+            android1:id="@+id/uploadTrackGenreTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/uploadTrackNameTextId"
+            android1:layout_marginBottom="20dp"
+            android1:text="@string/artistGenreText"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+
+        <EditText
+            android1:id="@+id/uploadTrackGenreInputId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignLeft="@+id/uploadTrackNameInputId"
+            android1:layout_alignTop="@+id/uploadTrackGenreTextId"
+            android1:layout_toRightOf="@+id/uploadTrackGenreTextId"
+            android1:ems="10"
+            android1:inputType="textPersonName"
+            android1:textAppearance="?android:attr/textAppearanceSmall"
+            android1:textColor="#00FFFF" />
+
+        <TextView
+            android1:id="@+id/uploadTrackDownloadLimitTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/uploadTrackGenreTextId"
+            android1:layout_marginBottom="20dp"
+            android1:layout_marginRight="10dp"
+            android1:text="@string/trackDownloadLimitText"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+
+        <EditText
+            android1:id="@+id/uploadTrackDownloadLimitInputId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignTop="@+id/uploadTrackDownloadLimitTextId"
+            android1:layout_toRightOf="@+id/uploadTrackDownloadLimitTextId"
+            android1:ems="10"
+            android1:inputType="textPersonName"
+            android1:textAppearance="?android:attr/textAppearanceSmall"
+            android1:textColor="#00FFFF" />
+
+        <TextView
+            android1:id="@+id/uploadTrackDescriptionTextId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_below="@+id/uploadTrackDownloadLimitTextId"
+            android1:layout_marginBottom="20dp"
+            android1:text="@string/uploadTrackDescription"
+            android1:textAppearance="?android:attr/textAppearanceLarge"
+            android1:textColor="#FFFFFF" />
+
+        <EditText
+            android1:id="@+id/uploadTrackDescriptionInputId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignLeft="@+id/uploadTrackDownloadLimitInputId"
+            android1:layout_alignTop="@+id/uploadTrackDescriptionTextId"
+            android1:layout_toRightOf="@+id/uploadTrackDescriptionTextId"
+            android1:ems="10"
+            android1:inputType="textPersonName"
+            android1:textAppearance="?android:attr/textAppearanceSmall"
+            android1:textColor="#00FFFF" />
+
+        <Button
+            android1:id="@+id/uploadTrackButtonId"
+            android1:layout_width="wrap_content"
+            android1:layout_height="wrap_content"
+            android1:layout_alignLeft="@+id/uploadTrackNameTextId"
+            android1:layout_below="@+id/uploadTrackDescriptionTextId"
+            android1:onClick="uploadTrackAction"
+            android1:text="@string/uploadButtonText" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -63,8 +63,15 @@ public class UserActivity extends RoboActivity {
 	 */
 	public void goToArtistInfoAction(View v) {
 		 Intent intent = new Intent(v.getContext(), ArtistInfoActivity.class);
-		 intent.putExtra(InsiemeAndroidConstants.USER_ID, currentUser.getUserId());
+		 intent.putExtra(InsiemeAndroidConstants.USER_ID, this.currentUser);
 		 startActivityForResult(intent, 0);
+	}
+	
+	public void goToArtistPageAction(View v) {
+		Intent intent = new Intent(v.getContext(), ArtistActivity.class);
+		intent.putExtra(InsiemeAndroidConstants.ARTIST_ID, getArtist(currentUser.getUserId()));
+		intent.putExtra(InsiemeAndroidConstants.USER_ID, this.currentUser);
+		startActivityForResult(intent, 0);
 	}
 	
 	/**
@@ -91,6 +98,32 @@ public class UserActivity extends RoboActivity {
 			}
 		}
 		return isArtistResult;
+	}
+	
+	/**
+	 * Gets the artist.
+	 * 
+	 * TODO: Sort of hacky code that assumes that an artist will be found for the user id.
+	 * Makes sense because the user should not have the ability to go to his artistPage without being an artist.
+	 * The entire layout is hidden if the user is not an artist.
+	 *
+	 * @param userId the user id
+	 * @return the artist
+	 */
+	private ArtistEntity getArtist(String userId) {
+		ArtistEntity artistResult = null;
+		try {
+			artistResult = getArtistTaskProvider.get()
+					.execute(userId)
+					.get()
+					.getRestResult();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		return artistResult;
+		
 	}
 	
 }

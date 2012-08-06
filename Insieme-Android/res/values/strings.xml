@@ -14,7 +14,6 @@
     <string name="RegisterImageContentDescription">register image</string>
     <string name="TrackListImageContentDescription">track list image</string>
     <string name="trackNameText">TRACK NAME</string>
-    <string name="trackGenreText">TRACK GENRE</string>
     <string name="trackDescriptionText">TRACK DESCRIPTION</string>
     <string name="trackDownloadCountText">DOWNLOAD COUNT</string>
     <string name="trackInfoImageContentDescription">track info image</string>
@@ -35,6 +34,11 @@
     <string name="myArtistPageImageContentDescription">my artist page image</string>
     <string name="myArtistPageButtonText">GO TO ARTIST PAGE</string>
     <string name="title_user">Insieme User</string>
+    <string name="trackIdText">TRACK ID</string>
+    <string name="trackGenreText">GENRE</string>
+    <string name="trackDownloadLimitText">DOWNLOAD LIMIT</string>
+    <string name="uploadButtonText">UPLOAD</string>
+    <string name="uploadTrackDescription">DESCRIPTION</string>
     
 	
 </resources>

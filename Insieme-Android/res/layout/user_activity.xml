@@ -177,7 +177,7 @@
    	        android1:layout_alignLeft="@+id/myArtistPageImageId"
    	        android1:layout_below="@+id/myArtistPageImageId"
    	        android1:layout_marginTop="20dp"
-   	        android1:onClick="goToArtistAction"
+   	        android1:onClick="goToArtistPageAction"
    	        android1:text="@string/myArtistPageButtonText" />
     </RelativeLayout>
 </RelativeLayout>

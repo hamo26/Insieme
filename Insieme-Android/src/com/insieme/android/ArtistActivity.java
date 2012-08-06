@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,11 +22,13 @@ import com.google.inject.Provider;
 import com.insieme.android.constants.InsiemeAndroidConstants;
 import com.insieme.android.track.task.impl.DeleteTrackTask;
 import com.insieme.android.track.task.impl.GetTracksForArtist;
+import com.insieme.android.track.task.impl.RegisterTrackTask;
 import com.insieme.android.track.task.impl.UpdateTrackTask;
 import com.insieme.common.domain.dto.ArtistEntity;
 import com.insieme.common.domain.dto.InsiemeExceptionEntity;
 import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.common.domain.dto.TrackListEntity;
+import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;
 
 /**
@@ -67,6 +70,29 @@ public class ArtistActivity extends RoboActivity {
 	@InjectView(R.id.trackNameValueTextId)
 	private TextView trackNameInfoText;
 	
+	@InjectView(R.id.uploadTrackIdInputId)
+	private EditText uploadTrackIdInput;
+	
+	@InjectView(R.id.uploadTrackNameInputId)
+	private EditText uploadTrackNameInput;
+	
+	@InjectView(R.id.uploadTrackGenreInputId)
+	private EditText uploadTrackGenreInput;
+	
+	@InjectView(R.id.uploadTrackDownloadLimitInputId)
+	private EditText uploadTrackDownloadLimitInput;
+	
+	@InjectView(R.id.uploadTrackDescriptionInputId)
+	private EditText uploadTrackDescriptionInput;
+	
+	@InjectView(R.id.uploadTrackLayoutId)
+	private RelativeLayout uploadTrackLayout;
+	
+	@InjectView(R.id.trackSettingsLayoutId)
+	private RelativeLayout trackSettingsLayout;
+	
+	
+	
 	@Inject
 	private Provider<GetTracksForArtist> getTracksForArtistTaskProvider;
 	
@@ -76,11 +102,19 @@ public class ArtistActivity extends RoboActivity {
 	@Inject
 	private Provider<DeleteTrackTask> deleteTrackTaskProvider;
 
+	@Inject
+	private Provider<RegisterTrackTask> registerTrackTaskProvider;
+	private UserEntity visitingUser;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.focusedArtistEntity = (ArtistEntity) getIntent().getSerializableExtra(InsiemeAndroidConstants.ARTIST_ID);
+        this.visitingUser = (UserEntity) getIntent().getSerializableExtra(InsiemeAndroidConstants.USER_ID);
+        if (!this.visitingUser.getUserId().equals(this.focusedArtistEntity.getArtistId())) {
+        	trackSettingsLayout.setVisibility(View.INVISIBLE);
+        	uploadTrackLayout.setVisibility(View.INVISIBLE);
+        }
         refreshArtistTrackList();
     }
 
@@ -182,6 +216,44 @@ public class ArtistActivity extends RoboActivity {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Upload track action.
+	 *
+	 *TODO: HArden this method by checking whether download limit is integer.
+	 * @param v the v
+	 */
+	public void uploadTrackAction(View v){
+		String uploadTrackId = uploadTrackIdInput.getText().toString();
+		String uploadTrackName = uploadTrackNameInput.getText().toString();
+		String uploadTrackGenre = uploadTrackGenreInput.getText().toString();
+		String uploadTrackDownloadLimit = uploadTrackDownloadLimitInput.getText().toString();
+		String uploadTrackDescription = uploadTrackDescriptionInput.getText().toString();
+		
+		TrackEntity uploadTrack = new TrackEntity(uploadTrackId, 
+				this.focusedArtistEntity.getArtistId(), 
+				uploadTrackGenre,
+				Integer.valueOf(uploadTrackDownloadLimit),
+				uploadTrackDescription, 
+				uploadTrackName);
+		
+		try {
+			RestResult<TrackEntity> restResult = registerTrackTaskProvider.get()
+									.execute(uploadTrack)
+									.get();
+			if (restResult.isFailure()) {
+				InsiemeExceptionEntity insiemeExceptionEntity = restResult.getError();
+    			Toast.makeText(this, insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
+			} else {
+				refreshArtistTrackList();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	private void setTrackInfo(TrackEntity track) {

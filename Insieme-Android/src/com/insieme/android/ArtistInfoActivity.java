@@ -27,6 +27,7 @@ import com.insieme.android.constants.InsiemeAndroidConstants;
 import com.insieme.common.domain.dto.ArtistEntity;
 import com.insieme.common.domain.dto.ArtistListEntity;
 import com.insieme.common.domain.dto.InsiemeExceptionEntity;
+import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;
 
 /**
@@ -40,7 +41,8 @@ import com.insieme.common.domain.rest.RestResult;
 @ContentView(R.layout.artist_info_activity)
 public class ArtistInfoActivity extends RoboActivity {
 	
-	private String userId;
+	private volatile UserEntity vistingUser;
+	private volatile ArtistEntity focusedArtist;
 	
 	@InjectView(R.id.artistListLayoutId)
 	private LinearLayout artistListLayout;
@@ -78,14 +80,13 @@ public class ArtistInfoActivity extends RoboActivity {
 	@Inject
 	private Provider<RegisterArtistTask> registerArtistTaskProvider;
 
-	private volatile ArtistEntity focusedArtist;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		this.userId = getIntent().getStringExtra(InsiemeAndroidConstants.USER_ID);
+		this.vistingUser = (UserEntity) getIntent().getSerializableExtra(InsiemeAndroidConstants.USER_ID);
 		//If a user is registered we want to make the registration layout invincible.
-		if (isArtist(this.userId)) {
+		if (isArtist(this.vistingUser.getUserId())) {
 			registerArtistLayout.setVisibility(View.INVISIBLE);
 		}
     }
@@ -93,6 +94,7 @@ public class ArtistInfoActivity extends RoboActivity {
 	public void goToArtistPageAction(View v) {
 		 Intent intent = new Intent(v.getContext(), ArtistActivity.class);
 		 intent.putExtra(InsiemeAndroidConstants.ARTIST_ID, this.focusedArtist);
+		 intent.putExtra(InsiemeAndroidConstants.USER_ID, this.vistingUser);
          startActivityForResult(intent, 0);
 
 	}
@@ -130,7 +132,7 @@ public class ArtistInfoActivity extends RoboActivity {
 		
 		try {
 			RestResult<ArtistEntity> restResult = registerArtistTaskProvider.get()
-					.execute(this.userId, artistName, artistGenre)
+					.execute(this.vistingUser.getUserId(), artistName, artistGenre)
 					.get();
 			if (restResult.isFailure()) {
 				InsiemeExceptionEntity insiemeExceptionEntity = restResult.getError();
@@ -138,6 +140,8 @@ public class ArtistInfoActivity extends RoboActivity {
 			} else {
 				ArtistEntity newArtist = restResult.getRestResult();
 				Toast.makeText(this, "Welcome: " + newArtist.getName(), Toast.LENGTH_LONG).show();
+				//you are now an artist and cant register.
+				registerArtistLayout.setVisibility(View.INVISIBLE);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
