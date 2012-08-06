@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutionException;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectView;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.insieme.android.artist.task.impl.GetArtistTask;
 import com.insieme.android.constants.InsiemeAndroidConstants;
 import com.insieme.common.domain.dto.ArtistEntity;
+import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;
 
@@ -33,10 +36,24 @@ public class UserActivity extends RoboActivity {
 	@InjectView(R.id.myArtistPageLayoutId)
 	private RelativeLayout myArtistPageLayout;
 	
+	@InjectView(R.id.trackDescriptionValueTextId)
+	private TextView trackDescriptionText;
+	
+	@InjectView(R.id.trackGenreValueTextId)
+	private TextView trackGenreText;
+	
+	@InjectView(R.id.trackNameValueTextId)
+	private TextView trackNameText;
+	
+	@InjectView(R.id.trackDownloadCountValueTextId)
+	private TextView trackDownloadCountText;
+	
 	private volatile UserEntity currentUser;
 	
 	@Inject
 	Provider<GetArtistTask> getArtistTaskProvider;
+
+	private volatile TrackEntity currentTrack;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,11 +64,18 @@ public class UserActivity extends RoboActivity {
         	myArtistPageLayout.setVisibility(View.INVISIBLE);
         }
         
-        Button newTrack;
+        UserTrackButton newTrack;
+        TrackEntity newTrackEntity;
         
         for(int i = 0; i<100; i++) {
-        	newTrack = new Button(this); 
-        	newTrack.setText("track" + i);
+        	newTrackEntity = new TrackEntity(String.valueOf(i), 
+        			"sampleArtist", 
+        			"sample Genre", 
+        			0,
+        			"sample track: " + i, 
+        			"Track: " + i);
+        	newTrack = new UserTrackButton(this, newTrackEntity); 
+        	newTrack.setText(newTrackEntity.getName());
         	trackListLayout.addView(newTrack);
         }
     }
@@ -124,6 +148,38 @@ public class UserActivity extends RoboActivity {
 		}
 		return artistResult;
 		
+	}
+	
+	/**
+	 * Sets the track info on a focused track.
+	 *
+	 * @param track the new track info
+	 */
+	private void setTrackInfo(TrackEntity track) {
+		this.currentTrack = track;
+		trackDescriptionText.setText(track.getDescription());
+		trackGenreText.setText(track.getGenre());
+		trackNameText.setText(track.getName());
+		trackDownloadCountText.setText(String.valueOf(track.getDownloadCount()));
+	}
+	
+	/**
+	 * The user track button to track buttons in the user scroll list view.
+	 */
+	private class UserTrackButton extends Button {
+		private final TrackEntity track;
+
+		OnClickListener clicker = new OnClickListener() {
+			public void onClick(View v) {
+				setTrackInfo(track);
+			}
+		};
+		
+		public UserTrackButton(Context context, TrackEntity track) {
+			super(context);
+			this.track = track;
+			setOnClickListener(clicker);
+		}
 	}
 	
 }

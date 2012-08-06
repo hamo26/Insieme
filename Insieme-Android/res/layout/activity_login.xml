@@ -38,28 +38,30 @@
         android:id="@+id/userNameInputId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/userNameTextId"
+        android:layout_alignTop="@+id/userNameTextId"
         android:layout_marginLeft="35dp"
         android:layout_toRightOf="@+id/userNameTextId"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android1:textColor="#00FFFF"  />
 
     <EditText
         android:id="@+id/passwordInputId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/passwordTextId"
+        android:layout_alignTop="@+id/passwordTextId"
         android:layout_alignLeft="@+id/userNameInputId"
+        android:layout_alignRight="@+id/userNameInputId"
         android:ems="10"
-        android:inputType="textPassword" />
+        android:inputType="textPassword" 
+        android1:textColor="#00FFFF" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/passwordInputId"
-        android:layout_alignRight="@+id/passwordInputId"
-        android:layout_below="@+id/passwordInputId"
+        android:layout_alignLeft="@+id/userNameInputId"
+        android:layout_below="@+id/passwordTextId"
         android:layout_marginTop="36dp"
         android:onClick="loginUser"
         android:text="@string/LoginButtonText" />
@@ -156,49 +158,58 @@
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_alignBaseline="@+id/registerLastNameTextId"
-        android1:layout_alignBottom="@+id/registerLastNameTextId"
+        android1:layout_alignTop="@+id/registerLastNameTextId"
         android1:layout_marginLeft="38dp"
         android1:layout_toRightOf="@+id/registerEmailAddressTextId"
         android1:ems="10"
-        android1:inputType="textPersonName" />
+        android1:inputType="textPersonName" 
+        android1:textColor="#00FFFF" />
 
     <EditText
         android1:id="@+id/registerFirstNameInputId"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
         android1:layout_alignLeft="@+id/registerLastNameInputId"
+        android1:layout_alignRight="@+id/registerLastNameInputId"
         android1:layout_alignTop="@+id/registerFirstNameTextId"
         android1:ems="10"
-        android1:inputType="textPersonName" />
+        android1:inputType="textPersonName" 
+        android1:textColor="#00FFFF" />
 
     <EditText
         android1:id="@+id/registerEmailInputId"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
+        android1:layout_alignTop="@+id/registerEmailAddressTextId"
         android1:layout_alignLeft="@+id/registerLastNameInputId"
+        android1:layout_alignRight="@+id/registerLastNameInputId"
         android1:layout_below="@+id/registerLastNameTextId"
         android1:ems="10"
-        android1:inputType="textPersonName" />
+        android1:inputType="textPersonName" 
+        android1:textColor="#00FFFF" />
 
     <EditText
         android1:id="@+id/registerPasswordInputId"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
-        android1:layout_alignBaseline="@+id/registerPasswordTextId"
-        android1:layout_alignBottom="@+id/registerPasswordTextId"
-        android1:layout_alignLeft="@+id/registerFirstNameInputId"
+        android1:layout_alignTop="@+id/registerPasswordTextId"
+        android1:layout_alignLeft="@+id/registerLastNameInputId"
+        android1:layout_alignRight="@+id/registerLastNameInputId"
         android1:ems="10"
-        android1:inputType="textPersonName" >
+        android1:inputType="textPassword" 
+        android1:textColor="#00FFFF" >
     </EditText>
 
     <EditText
         android1:id="@+id/registerUserInputId"
         android1:layout_width="wrap_content"
         android1:layout_height="wrap_content"
-        android1:layout_above="@+id/loginImageId"
-        android1:layout_alignLeft="@+id/registerPasswordInputId"
+        android1:layout_alignTop="@+id/registerUserNameTextId"
+        android1:layout_alignLeft="@+id/registerLastNameInputId"
+        android1:layout_alignRight="@+id/registerLastNameInputId"
         android1:ems="10"
-        android1:inputType="textPersonName" />
+        android1:inputType="textPersonName"
+        android1:textColor="#00FFFF"  />
 
     <Button
         android1:id="@+id/registerButtonId"

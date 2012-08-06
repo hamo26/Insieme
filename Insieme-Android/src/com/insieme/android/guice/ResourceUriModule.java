@@ -11,7 +11,7 @@ public class ResourceUriModule extends AbstractModule {
 		//System specific bindings. 
 		//TODO: should put these in properties files.
 		bind(String.class).annotatedWith(Names.named("host")).toInstance("192.168.0.60");
-		bind(Integer.class).annotatedWith(Names.named("hostPort")).toInstance(8184);
+		bind(Integer.class).annotatedWith(Names.named("hostPort")).toInstance(8189);
 		
 		//Resource bindings.
 		bind(String.class).annotatedWith(Names.named("authenticationResource")).toInstance("user/login");

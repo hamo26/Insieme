@@ -22,7 +22,7 @@ import com.insieme.core.user.rest.handlers.impl.RegistrationResourceImpl;
  * The Base Rest Handler which defines all url binding and delegates to the appropriate resource.
  * 
  * TO DO: look at a cleaner way of binding. This method isn't bad but could do better.
- *
+ * An approach that comes to mind is spring @Path bindings.
  */
 public class BaseRestHandlerImpl extends Application {
 	

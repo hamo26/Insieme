@@ -75,7 +75,7 @@ public class LoginActivity extends RoboActivity{
 			RestResult<UserEntity> loginResult = loginTaskProvider.get().execute(userId, userPassword).get();
     		if (loginResult.isFailure()) {
     			InsiemeExceptionEntity insiemeExceptionEntity = loginResult.getError();
-    			Toast.makeText(this, "welcome: " + insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
+    			Toast.makeText(this, insiemeExceptionEntity.getException(), Toast.LENGTH_LONG).show();
     		} else {
     			UserEntity userEntity = loginResult.getRestResult();
     			goToUserPage(userEntity, v);
