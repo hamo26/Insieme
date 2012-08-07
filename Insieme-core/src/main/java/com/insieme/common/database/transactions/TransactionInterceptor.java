@@ -7,6 +7,11 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
 
+/**
+ * Any method annotated with {@link Transaction} will call this method. 
+ * THis method serves to roll back changes if a commit changes. Unfortunately 
+ * the sql driver provided by java doesn't roll back transaction (or at least to my knowledge).
+ */
 public class TransactionInterceptor implements MethodInterceptor {
 
 	@Override

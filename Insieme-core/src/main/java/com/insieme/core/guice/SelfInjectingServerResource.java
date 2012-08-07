@@ -6,6 +6,10 @@ import org.restlet.resource.ServerResource;
 
 import com.google.inject.Inject;
 
+/**
+ * Resources that extend this class have injection capabilities and can inject 
+ * some of the utilities and services I need.
+ */
 public abstract class SelfInjectingServerResource extends ServerResource {
 	/**
 	 * Implemented by DI framework-specific code. For example, with Guice, the

@@ -3,7 +3,7 @@ package com.insieme.core.tracks.rest.handlers;
 import org.restlet.resource.Get;
 
 /**
- * The TracksResource.
+ * Resource used to get track information.
  */
 public interface TracksResource {
 	

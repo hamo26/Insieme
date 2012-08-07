@@ -19,7 +19,7 @@ import com.mysql.jdbc.StringUtils;
 
 
 /**
- * Login Resource to login and register a user. 
+ * Implementation of {@link AuthenticationResource}.
  * 
  * TODO: consider separating resources into one for loging in and one for registering and deleting accounts.
  */

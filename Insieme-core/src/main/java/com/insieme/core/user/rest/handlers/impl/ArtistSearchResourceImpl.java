@@ -20,6 +20,9 @@ import com.insieme.core.artist.service.ArtistService;
 import com.insieme.core.guice.SelfInjectingServerResource;
 import com.insieme.core.user.rest.handlers.ArtistSearchResource;
 
+/**
+ * Implementation of {@link ArtistSearchResource}.
+ */
 public class ArtistSearchResourceImpl extends SelfInjectingServerResource
 		implements ArtistSearchResource {
 

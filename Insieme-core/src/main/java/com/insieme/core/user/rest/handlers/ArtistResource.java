@@ -4,7 +4,7 @@ import org.restlet.resource.Get;
 import org.restlet.resource.Post;
 
 /**
- * The ArtistResource.
+ * Resource to register and get artist information.
  */
 public interface ArtistResource {
 

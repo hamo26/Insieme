@@ -45,7 +45,7 @@ public class BaseRestHandlerImpl extends Application {
         		new SelfInjectingServerResourceModule(),
         		new InsiemeCommonModule());
         
-        // Defines only one route  
+        // Defines all routes to resources from the outside rest client world.
         router.attach("/user/login", AuthenticationResourceImpl.class);  
         router.attach("/tracks/{trackId}", TracksResourceImpl.class);
         router.attach("/register/track", RegisterTrackResourceImpl.class);

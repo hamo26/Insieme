@@ -24,6 +24,9 @@ import com.insieme.core.guice.ServiceModule;
 import com.insieme.core.user.service.UserService;
 import com.insieme.core.user.service.impl.UserServiceImpl;
 
+/**
+ * Tests the {@link SelfInjectingServerResource}.
+ */
 public class SelfInjectingServerResourceModuleTest extends Application {
 	 @Test public void testReturnsMessage() {
 	        ClientResource client = new ClientResource("http://localhost:8118");
@@ -31,7 +34,10 @@ public class SelfInjectingServerResourceModuleTest extends Application {
 	        assertEquals(UserServiceImpl.class.getName(), msg);
 	    }
 	 
-	    @Before public void createInjector() {
+	    /**
+    	 * Creates the injector.
+    	 */
+    	@Before public void createInjector() {
 	        Guice.createInjector(
 	            new ServiceModule(),
 	            new SelfInjectingServerResourceModule(),
@@ -39,14 +45,24 @@ public class SelfInjectingServerResourceModuleTest extends Application {
 	        );
 	    }
 	 
-	    @Before public void startComponent() throws Exception {
+	    /**
+    	 * Starts internal Rest server.
+    	 *
+    	 * @throws Exception the exception
+    	 */
+    	@Before public void startComponent() throws Exception {
 	        component = new Component();
 	        component.getServers().add(Protocol.HTTP, 8118);
 	        component.getDefaultHost().attachDefault(this);
 	        component.start();
 	    }
 	 
-	    @After public void stopComponent() throws Exception {
+	    /**
+    	 * Stops rest server.
+    	 *
+    	 * @throws Exception the exception
+    	 */
+    	@After public void stopComponent() throws Exception {
 	        component.stop();
 	    }
 	 
@@ -59,11 +75,17 @@ public class SelfInjectingServerResourceModuleTest extends Application {
 	        return router;
 	    }
 	 
-	    public interface HelloResource {
+	    /**
+    	 * Test resource.
+    	 */
+    	public interface HelloResource {
 	        @Get String getMessage();
 	    }
 	 
-	    public static class HelloServerResource
+	    /**
+    	 * Test implementation of the {@link HelloResource} which extends the {@link SelfInjectingServerResource}.
+    	 */
+    	public static class HelloServerResource
 	            extends SelfInjectingServerResource implements HelloResource {
 	 
 	        @Override public String getMessage() {

@@ -11,6 +11,8 @@ import com.insieme.common.database.tables.Tracks;
 
 /**
  * Tracks record class used by JOOQ.
+ * 
+ * I dont use this generated class I serialize into my own insieme dtos.
  */
 public class TracksRecord extends TableRecordImpl<TracksRecord> {
 

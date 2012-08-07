@@ -5,7 +5,7 @@ import org.restlet.resource.Post;
 import com.insieme.common.domain.dto.InsiemeException;
 
 /**
- * Resource used to register track.
+ * Resource used to register tracks.
  */
 public interface RegisterTrackResource {
 

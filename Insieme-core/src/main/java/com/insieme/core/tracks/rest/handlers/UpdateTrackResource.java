@@ -7,11 +7,13 @@ import com.insieme.common.domain.dto.InsiemeException;
 
 /**
  * Resource used to register track.
+ * 
+ * TODO: there should be a method to simple decrement a track download count.
  */
 public interface UpdateTrackResource {
 
 	/**
-	 * Update track (mainly the download count). This is a database transaction and so if the transaction does 
+	 * Update a track. This is a database transaction and so if the transaction does 
 	 * not succeed, it is rolled back.
 	 *
 	 * @param trackRepresentation the track representation

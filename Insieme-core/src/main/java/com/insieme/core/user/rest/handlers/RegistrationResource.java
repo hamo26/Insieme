@@ -5,7 +5,7 @@ import org.restlet.resource.Post;
 import com.insieme.common.database.transactions.Transaction;
 
 /**
- * The Registration Resource.
+ * Resource used to register a user.
  */
 public interface RegistrationResource {
 

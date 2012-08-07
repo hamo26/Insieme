@@ -19,6 +19,9 @@ import com.insieme.core.service.util.UserValidator;
 import com.insieme.core.user.rest.handlers.RegistrationResource;
 import com.insieme.core.user.service.UserService;
 
+/**
+ * Implementation of {@link RegistrationResource}.
+ */
 public class RegistrationResourceImpl extends SelfInjectingServerResource
 		implements RegistrationResource {
 

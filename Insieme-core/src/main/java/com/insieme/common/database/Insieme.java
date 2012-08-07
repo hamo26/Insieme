@@ -34,6 +34,7 @@ public class Insieme extends SchemaImpl {
 
 	@Override
 	public final List<Table<?>> getTables() {
+		//return tables associated with Insieme database.
 		return Arrays.<Table<?>>asList(
 			Artists.ARTISTS,
 			Tracks.TRACKS,
