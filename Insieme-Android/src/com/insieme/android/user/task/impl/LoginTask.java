@@ -17,6 +17,9 @@ import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;
 import com.insieme.common.domain.rest.RestResultHandler;
 
+/**
+ * task to login a user.
+ */
 public class LoginTask extends AsyncTask<String, Integer, RestResult<UserEntity>>{
 	
 	

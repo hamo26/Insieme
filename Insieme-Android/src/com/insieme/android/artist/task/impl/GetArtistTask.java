@@ -27,6 +27,14 @@ public class GetArtistTask extends AsyncTask<String, Integer, RestResult<ArtistE
 	private final RestResultHandler restResultHandler;
 	private final String artistResourceUri;
 	
+	/**
+	 * Default Constructor.
+	 *
+	 * @param restTemplate the rest template
+	 * @param resourceUriBuilder the resource uri builder
+	 * @param artistResourceUri the artist resource uri
+	 * @param restResultHandler the rest result handler
+	 */
 	@SuppressWarnings("unchecked")
 	@Inject
 	public GetArtistTask(@Named("restTemplate") 

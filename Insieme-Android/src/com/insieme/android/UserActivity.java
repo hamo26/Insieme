@@ -24,6 +24,10 @@ import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;
 
+/**
+ * Activity where the user can manage and play tracks. 
+ * Users can also go to the artists info page to search for artists.
+ */
 @ContentView(R.layout.user_activity)
 public class UserActivity extends RoboActivity {
 	
@@ -59,11 +63,12 @@ public class UserActivity extends RoboActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         currentUser = (UserEntity) getIntent().getSerializableExtra(InsiemeAndroidConstants.USER_ID);
-        
+        //Check to see if the current user is an artist to attach a link to their artist page.
         if (!isArtist(currentUser.getUserId())) {
         	myArtistPageLayout.setVisibility(View.INVISIBLE);
         }
         
+        //Stub fake tracks in the list for now.
         UserTrackButton newTrack;
         TrackEntity newTrackEntity;
         
@@ -91,6 +96,11 @@ public class UserActivity extends RoboActivity {
 		 startActivityForResult(intent, 0);
 	}
 	
+	/**
+	 * Go to user's artist page action.
+	 *
+	 * @param v the v
+	 */
 	public void goToArtistPageAction(View v) {
 		Intent intent = new Intent(v.getContext(), ArtistActivity.class);
 		intent.putExtra(InsiemeAndroidConstants.ARTIST_ID, getArtist(currentUser.getUserId()));
@@ -165,6 +175,7 @@ public class UserActivity extends RoboActivity {
 	
 	/**
 	 * The user track button to track buttons in the user scroll list view.
+	 * Wraps {@link Button} class and enhances it with {@link TrackEntity} information.
 	 */
 	private class UserTrackButton extends Button {
 		private final TrackEntity track;

@@ -91,6 +91,11 @@ public class ArtistInfoActivity extends RoboActivity {
 		}
     }
 	
+	/**
+	 * Go to artist page action. 
+	 *
+	 * @param v the v
+	 */
 	public void goToArtistPageAction(View v) {
 		 Intent intent = new Intent(v.getContext(), ArtistActivity.class);
 		 intent.putExtra(InsiemeAndroidConstants.ARTIST_ID, this.focusedArtist);
@@ -151,7 +156,7 @@ public class ArtistInfoActivity extends RoboActivity {
 	}
 	
 	/**
-	 * Populated the artists tab with the artists returned from a query.
+	 * Helper method to populate the artists tab with the artists returned from a query.
 	 *
 	 * @param artists the artists
 	 */
@@ -207,6 +212,9 @@ public class ArtistInfoActivity extends RoboActivity {
 		return isArtistResult;
 	}
 	
+	/**
+	 * Wrapper class around {@link Button} enhanced to keep track of artists.
+	 */
 	private class ArtistButton extends Button {
 		private final ArtistEntity artist;
 

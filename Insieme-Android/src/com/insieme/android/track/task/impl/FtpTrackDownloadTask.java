@@ -12,6 +12,11 @@ import com.insieme.common.domain.dto.TrackEntity;
 import com.insieme.common.domain.rest.RestResult;
 import com.insieme.common.domain.rest.RestResultHandler;
 
+/**
+ * Task to initiate an ftp download of a file given a uri.
+ * 
+ * TODO: Finish implementing this class and include a progress bar.
+ */
 public class FtpTrackDownloadTask extends AsyncTask<String, Integer, RestResult<TrackEntity>>{
 	
 	
@@ -33,6 +38,7 @@ public class FtpTrackDownloadTask extends AsyncTask<String, Integer, RestResult<
 	protected RestResult<TrackEntity> doInBackground(String... params) {
 		try {
 			boolean login = ftpClient.login("", "");
+			
 			return restResultHandler.createRestResult(params[0], TrackEntity.class);
 		} catch (IOException e) {
 			return restResultHandler.createErrorResult(e.getLocalizedMessage(), TrackEntity.class);

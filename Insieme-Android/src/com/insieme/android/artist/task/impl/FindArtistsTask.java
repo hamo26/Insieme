@@ -28,6 +28,14 @@ public class FindArtistsTask extends AsyncTask<String, Integer, RestResult<Artis
 	private final RestResultHandler restResultHandler;
 	private final String searchArtistResourceUri;
 	
+	/**
+	 * Default Constructor.
+	 *
+	 * @param restTemplate the rest template
+	 * @param resourceUriBuilder the resource uri builder
+	 * @param searchArtistResourceUri the search artist resource uri
+	 * @param restResultHandler the rest result handler
+	 */
 	@SuppressWarnings("unchecked")
 	@Inject
 	public FindArtistsTask(@Named("restTemplate") 

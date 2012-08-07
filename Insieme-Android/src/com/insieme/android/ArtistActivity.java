@@ -33,12 +33,23 @@ import com.insieme.common.domain.rest.RestResult;
 
 /**
  * Views and manages artist activity.
+ * 
+ * This class includes the ability to upload and update tracks if you are the artist visiting. 
+ * Otherwise it simply lists tracks associated with the user and allows visitors to download them.
  */
 @ContentView(R.layout.artist_activity)
 public class ArtistActivity extends RoboActivity {
 	
+	//I chose to use volatile for thread security. May not be needed.
+	
+	/** The focused artist in the info pane is being displayed. */
 	private volatile ArtistEntity focusedArtistEntity;
+	
+	/** The focused track in the info pane. */
 	private volatile TrackEntity focusedTrack;
+	
+	/** The visiting user. */
+	private volatile UserEntity visitingUser;
 	
 	@InjectView(R.id.trackListLayoutId)
 	private LinearLayout trackListLayout;
@@ -91,8 +102,6 @@ public class ArtistActivity extends RoboActivity {
 	@InjectView(R.id.trackSettingsLayoutId)
 	private RelativeLayout trackSettingsLayout;
 	
-	
-	
 	@Inject
 	private Provider<GetTracksForArtist> getTracksForArtistTaskProvider;
 	
@@ -104,13 +113,15 @@ public class ArtistActivity extends RoboActivity {
 
 	@Inject
 	private Provider<RegisterTrackTask> registerTrackTaskProvider;
-	private UserEntity visitingUser;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //get artist from intent passed on by previous activity.
         this.focusedArtistEntity = (ArtistEntity) getIntent().getSerializableExtra(InsiemeAndroidConstants.ARTIST_ID);
+      //get user from intent passed on by previous activity.
         this.visitingUser = (UserEntity) getIntent().getSerializableExtra(InsiemeAndroidConstants.USER_ID);
+        
         if (!this.visitingUser.getUserId().equals(this.focusedArtistEntity.getArtistId())) {
         	trackSettingsLayout.setVisibility(View.INVISIBLE);
         	uploadTrackLayout.setVisibility(View.INVISIBLE);
@@ -145,6 +156,11 @@ public class ArtistActivity extends RoboActivity {
 	}
 	
 	
+	/**
+	 * Helper method to populate the track list scroll view given a collection of tracks.
+	 *
+	 * @param tracks the tracks
+	 */
 	private void populateArtistTracks(Collection<TrackEntity> tracks) {
 		TrackButton trackButton;
 		trackListLayout.removeAllViews();
@@ -160,6 +176,8 @@ public class ArtistActivity extends RoboActivity {
 	}
 	
 	/**
+	 * Updates a track based on what the user has entered in the track settings.
+	 * 
 	 * TODO: the update and delete tracks are astoundingly similar. Refactor both methods.
 	 *
 	 * @param v the v
@@ -196,6 +214,8 @@ public class ArtistActivity extends RoboActivity {
 	}
 	
 	/**
+	 * Deletes the track that is currently in focus.
+	 * 
 	 * TODO: Look at comment above.
 	 *
 	 * @param v the v
@@ -219,9 +239,9 @@ public class ArtistActivity extends RoboActivity {
 	}
 	
 	/**
-	 * Upload track action.
+	 * Responds to upload button and uploads track information entered.
 	 *
-	 *TODO: HArden this method by checking whether download limit is integer.
+	 *TODO: Harden this method by checking whether download limit is integer.
 	 * @param v the v
 	 */
 	public void uploadTrackAction(View v){
@@ -256,6 +276,12 @@ public class ArtistActivity extends RoboActivity {
 		
 	}
 	
+	/**
+	 * Helper method to set track info given a track.
+	 * Responds to {@link TrackButton} clicks.
+	 *
+	 * @param track the new track info
+	 */
 	private void setTrackInfo(TrackEntity track) {
 		this.focusedTrack = track;
 		trackGenreInfoText.setText(track.getGenre());
@@ -265,6 +291,10 @@ public class ArtistActivity extends RoboActivity {
 	}
 	
 	 
+	/**
+	 * Internal wrapper class around a {@link Button} but enhanced to keep track of tracks.
+	 * No pun intended.....
+	 */
 	private class TrackButton extends Button {
 		private final TrackEntity track;
 

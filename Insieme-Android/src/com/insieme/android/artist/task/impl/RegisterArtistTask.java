@@ -17,6 +17,9 @@ import com.insieme.common.domain.dto.ArtistEntity;
 import com.insieme.common.domain.rest.RestResult;
 import com.insieme.common.domain.rest.RestResultHandler;
 
+/**
+ * Task to register a User as an Artist.
+ */
 public class RegisterArtistTask
 		extends
 		AsyncTask<String, Integer, RestResult<ArtistEntity>> {
@@ -26,6 +29,14 @@ public class RegisterArtistTask
 	private final String artistRegistrationResourceUri;
 	private final RestResultHandler restResultHandler;
 	
+	/**
+	 * Default Constructor.
+	 *
+	 * @param restTemplate the rest template
+	 * @param resourceUriBuilder the resource uri builder
+	 * @param artistRegistrationResourceUri the artist registration resource uri
+	 * @param restResultHandler the rest result handler
+	 */
 	@SuppressWarnings("unchecked")
 	@Inject
 	public RegisterArtistTask(@Named("restTemplate") 

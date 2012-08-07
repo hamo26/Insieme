@@ -18,7 +18,7 @@ import com.insieme.common.domain.rest.RestResult;
 import com.insieme.common.domain.rest.RestResultHandler;
 
 /**
- * Task to update a track.
+ * Task to delete a track.
  */
 public class DeleteTrackTask extends
 		AsyncTask<TrackEntity, Integer, RestResult<TrackEntity>> {

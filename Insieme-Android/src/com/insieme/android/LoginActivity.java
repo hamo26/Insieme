@@ -25,6 +25,9 @@ import com.insieme.common.domain.dto.InsiemeExceptionEntity;
 import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.domain.rest.RestResult;
 
+/**
+ * Manages all logins and registration and is the initial activity loaded by the app.
+ */
 @ContentView(R.layout.activity_login)
 public class LoginActivity extends RoboActivity{
 	private static final String INSIEME_TEST_FILE = "InsiemeTest";
@@ -63,9 +66,8 @@ public class LoginActivity extends RoboActivity{
     
     
     /**
-     * Login user binding.
+     * Login user binding. Checks to see that all fields are entered as well.
      * 
-     * TODO: Only takes happy path into account. Need some kind of exception handling wrapper.
      */
     public void loginUser(View v) {
     	try{
@@ -86,7 +88,12 @@ public class LoginActivity extends RoboActivity{
     }
     
     /**
-     * Register user and create common insieme music folder.
+     * Register user and creates common Insieme music folder used by the app to store user music.
+     * 
+     * TODO: Ideally we want the folder to be created once on the machine and so we should check to
+     * see that the folder exists.
+     * 
+     * UPDATE: The check has been added.
      *
      * @param v the view
      */
@@ -142,6 +149,7 @@ public class LoginActivity extends RoboActivity{
     private void createInsiemeMusicFolder() throws IOException {
     	String helloInsieme = "Welcome to Insieme!!!";
     	File helloInsiemeTestFile = new File(getFilesDir() + "/" + INSIEME_TEST_FILE);
+    	//Check if the folder exists first.
     	if (helloInsiemeTestFile.exists()) {
     		return;
     	} else {

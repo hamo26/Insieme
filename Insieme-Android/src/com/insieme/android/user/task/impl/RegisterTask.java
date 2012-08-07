@@ -17,6 +17,9 @@ import com.insieme.common.domain.rest.RestResultHandler;
 
 import android.os.AsyncTask;
 
+/**
+ * Task to register a user.
+ */
 public class RegisterTask extends AsyncTask<String, Integer, RestResult<UserEntity>> {
 
 	private final RestTemplate restTemplate;
