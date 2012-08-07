@@ -3,6 +3,13 @@ package com.insieme.common.domain.rest;
 import com.insieme.common.domain.dto.RestEntity;
 import com.insieme.common.domain.dto.InsiemeExceptionEntity;
 
+/**
+ * This class wraps a dto returned and signals whether the result of a REsT operation 
+ * was successful or not. If it wasn't I provide the error, otherwise I provide the actual 
+ * {@link RestEntity} result.
+ *
+ * @param <T> the generic type which extends {@link RestEntity}.
+ */
 public class RestResult<T extends RestEntity> {
 
 	private final Boolean isSuccessful;
@@ -11,6 +18,13 @@ public class RestResult<T extends RestEntity> {
 	
 	private final T restResultDto;
 
+	/**
+	 * Default Constructor.
+	 *
+	 * @param isSuccessful the is successful
+	 * @param restResultDto the rest result dto
+	 * @param insiemeExceptionDto the insieme exception dto
+	 */
 	private RestResult(final Boolean isSuccessful, 
 					   final T restResultDto, 
 					   final InsiemeExceptionEntity insiemeExceptionDto) {
@@ -35,6 +49,14 @@ public class RestResult<T extends RestEntity> {
 		return this.restResultDto;
 	}
 	
+	/**
+	 * Inner builder class used to create a {@link RestResult}.
+	 * 
+	 * Look at the builder pattern for more information on why I chose this 
+	 * approach.
+	 *
+	 * @param <T> the generic type
+	 */
 	public static final class RestResultBuilder<T extends RestEntity> {
 		
 		private Boolean isSuccessful;
@@ -55,6 +77,11 @@ public class RestResult<T extends RestEntity> {
 			return this;
 		}
 		
+		/**
+		 * Builds the {@link RestResult} and ensures paramaters are used to build are valid.
+		 *
+		 * @return the rest result
+		 */
 		public RestResult<T> build() {
 			assert this.isSuccessful != null : "rest result must be either successful or not.";
 			if (this.isSuccessful) {

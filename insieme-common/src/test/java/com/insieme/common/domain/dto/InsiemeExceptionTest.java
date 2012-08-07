@@ -8,6 +8,9 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.insieme.common.guice.InsiemeCommonModule;
 
+/**
+ * Tests {@link InsiemeExceptionFactory} and its injections.
+ */
 public class InsiemeExceptionTest {
 
 	@Test
@@ -17,6 +20,9 @@ public class InsiemeExceptionTest {
 		assertEquals("{\"insieme-error\":\"test\"}", serializedJsonException);
 	}
 	
+	/**
+	 * Class to be injected using GUICE.
+	 */
 	private static class TestClass {
 
 		@Inject

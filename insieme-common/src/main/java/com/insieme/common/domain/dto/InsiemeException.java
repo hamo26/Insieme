@@ -6,7 +6,10 @@ import com.google.inject.name.Named;
 import com.insieme.common.util.JSONUtil;
 
 /**
- * Insieme exception that can easily be json-ified and transfered to client.
+ * Insieme exception that can easily be json-ified and transfered to the client.
+ * 
+ * TODO: Figure out a way to get rid of the json util being injected and hae the rest handler take care of 
+ * 		 deserializing the exception.
  */
 public class InsiemeException extends Exception {
 
@@ -17,6 +20,12 @@ public class InsiemeException extends Exception {
 
 	private final JSONUtil jsonUtil;
 	
+	/**
+	 * Default constructor.
+	 *
+	 * @param jsonUtil the json util
+	 * @param exception the exception
+	 */
 	@Inject
 	public InsiemeException (@Named("jsonUtil") final JSONUtil jsonUtil, 
 			@Assisted final String exception) {
@@ -24,6 +33,11 @@ public class InsiemeException extends Exception {
 		this.exception = new InsiemeExceptionEntity(exception);
 	}
 	
+	/**
+	 * Serialize the json exception.
+	 *
+	 * @return the string
+	 */
 	public String serializeJsonException() {
 		return jsonUtil.serializeRepresentation(this.exception);
 	}

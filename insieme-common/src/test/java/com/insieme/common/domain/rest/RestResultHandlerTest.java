@@ -12,10 +12,16 @@ import com.insieme.common.domain.dto.InsiemeExceptionEntity;
 import com.insieme.common.domain.dto.UserEntity;
 import com.insieme.common.guice.InsiemeCommonModule;
 
+/**
+ * Tests {@link RestResultHandler}.
+ */
 public class RestResultHandlerTest {
 	private static final String VALID_USER = "{\"user-id\":1,\"password\":\"2\"}";
 	private static final String INSIEME_EXCEPTION = "{\"insieme-error\":\"1\"}";
 	
+	/**
+	 * Test result handler success.
+	 */
 	@Test
 	public void testResultHandlerSuccess() {
 		TestClass testClass = Guice.createInjector(new InsiemeCommonModule()).getInstance(TestClass.class);
@@ -27,6 +33,9 @@ public class RestResultHandlerTest {
 		assertTrue(userResult.getPassword().equals("2"));
 	}
 	
+	/**
+	 * Test result handler failure.
+	 */
 	@Test
 	public void testResultHandlerFailure() {
 		TestClass testClass = Guice.createInjector(new InsiemeCommonModule()).getInstance(TestClass.class);
@@ -37,6 +46,9 @@ public class RestResultHandlerTest {
 		assertTrue(errorResult.getException().equals("1"));
 	}
 
+	/**
+	 * Class to be injected by GUICE.
+	 */
 	private static class TestClass {
 		private final RestResultHandler restResultHandler;
 		

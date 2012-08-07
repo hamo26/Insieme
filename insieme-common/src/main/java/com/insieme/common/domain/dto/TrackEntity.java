@@ -39,6 +39,18 @@ public class TrackEntity extends RestEntity implements Serializable{
 	@SerializedName(NAME)
 	private final String name;
 
+	/**
+	 * Default Constructo.
+	 * 
+	 * Used by jooq as well to read into/from database.
+	 *
+	 * @param TRACK_ID the track id
+	 * @param ARTIST_ID the artist id
+	 * @param GENRE the genre
+	 * @param DOWNLOAD_COUNT the download count
+	 * @param DESCRIPTION the description
+	 * @param TRACK_NAME the track name
+	 */
 	public TrackEntity(final String TRACK_ID, final String ARTIST_ID,
 			final String GENRE, final int DOWNLOAD_COUNT,
 			final String DESCRIPTION, final String TRACK_NAME) {

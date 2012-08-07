@@ -40,6 +40,17 @@ public class UserEntity extends RestEntity implements Serializable{
 	@SerializedName(EMAIL_ADDRESS)
 	private String emailAddress;
 	
+	/**
+	 * Default constructor.
+	 * 
+	 * Used by jooq to read from/into database.
+	 *
+	 * @param USER_ID the user id
+	 * @param FIRST_NAME the first name
+	 * @param LAST_NAME the last name
+	 * @param USER_PASSWORD the user password
+	 * @param USER_EMAIL the user email
+	 */
 	public UserEntity(final String USER_ID, final String FIRST_NAME, 
 				final String LAST_NAME, final String USER_PASSWORD, final String USER_EMAIL) {
 		this.userId = USER_ID;

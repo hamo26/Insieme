@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Artist Entity DTO used to serialize/deserialize artist representations.
+ */
 public class ArtistEntity extends RestEntity implements Serializable{
 
 	/**
@@ -26,6 +29,15 @@ public class ArtistEntity extends RestEntity implements Serializable{
 	@SerializedName(ARTIST_NAME)
 	private final String name;
 	
+	/**
+	 * Default Constructor. 
+	 * 
+	 * JOOQ also uses the constructor to read into/from database.
+	 *
+	 * @param ARTIST_ID the artist id
+	 * @param ARTIST_NAME the artist name
+	 * @param GENRE the genre
+	 */
 	public ArtistEntity(final String ARTIST_ID, final String ARTIST_NAME,
 			final String GENRE) {
 		artistId = ARTIST_ID;
@@ -33,10 +45,20 @@ public class ArtistEntity extends RestEntity implements Serializable{
 		name = ARTIST_NAME;
 	}
 
+	/**
+	 * Gets the genre.
+	 *
+	 * @return the genre
+	 */
 	public String getGenre() {
 		return genre;
 	}
 
+	/**
+	 * Gets the artist id.
+	 *
+	 * @return the artist id
+	 */
 	public String getArtistId() {
 		return artistId;
 	}

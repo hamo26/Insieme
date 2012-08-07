@@ -23,6 +23,11 @@ public class ArtistListEntity extends RestEntity implements Serializable{
 		this.artists = artists;
 	}
 
+	/**
+	 * Gets the artists.
+	 *
+	 * @return the artists
+	 */
 	public Collection<ArtistEntity> getArtists() {
 		return artists;
 	}

@@ -9,6 +9,8 @@ import com.insieme.common.util.JSONUtil;
 
 /**
  * All rest responses go through this handler to facilitate exception handling on the client side.
+ * This class serves as a helper method to faciliate eror checking and deserialization of entities communicated
+ * from the core server. 
  */
 public class RestResultHandler {
 	
@@ -20,7 +22,7 @@ public class RestResultHandler {
 	}
 	
 	/**
-	 * Creates the rest result.
+	 * Creates the rest result for a json string representation and an expected entity.
 	 *
 	 * @param <E> the element type
 	 * @param jsonResult the json result
